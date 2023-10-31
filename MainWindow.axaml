@@ -112,7 +112,6 @@
 			<Setter Property="BorderBrush" Value="Snow"/>
 			<Setter Property="Margin" Value="0 5"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
-			<Setter Property="Text" Value="$"/>
 		</Style>
 
 		<Style Selector="TextBlock.pricePromptTextBlock">
@@ -130,7 +129,6 @@
 			<Setter Property="BorderBrush" Value="Snow"/>
 			<Setter Property="Margin" Value="0 5"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
-			<Setter Property="Text" Value="%"/>
 		</Style>
 
 		<Style Selector="TextBox.yearsAnswerTextBox">
@@ -147,7 +145,7 @@
 	<Panel>
 		<StackPanel Classes="openingStackPanel" 
 			Name="homeStackPanel" 
-			IsVisible="False">
+			IsVisible="True">
 			<TextBlock
 				Padding="20,50,20,20"
 				FontSize="25"
@@ -1143,13 +1141,13 @@
 				<Grid 
 					ShowGridLines="False" 
 					Margin="5"
-					ColumnDefinitions="100, 100"
+					ColumnDefinitions="150, 100"
 					RowDefinitions="50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
 						Classes="pricePromptTextBlock">
-						old price
+						old price ($)
 					</TextBlock>
 					<TextBox
 						Grid.Row="0"
@@ -1161,7 +1159,7 @@
 					Grid.Row="1"
 					Grid.Column="0"
 					Classes="pricePromptTextBlock">
-						new price
+						new price ($)
 					</TextBlock>
 					<TextBox
 					Grid.Row="1"
@@ -1184,7 +1182,8 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15"> 
+				FontSize="15"
+				Click="calculateInflation"> 
 				calculate
 			</Button>
 			
@@ -1192,7 +1191,8 @@
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">			  
+				Foreground="Snow"
+				Name="inflationValue">			  
 			</TextBlock>
 		</StackPanel>
 
@@ -1215,13 +1215,13 @@
 				<Grid
 					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="100, 100"
+					ColumnDefinitions="150, 100"
 					RowDefinitions="50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
 						Classes="pricePromptTextBlock">
-						old price
+						old price ($)
 					</TextBlock>
 					<TextBox
 						Grid.Row="0"
@@ -1233,7 +1233,7 @@
 					Grid.Row="1"
 					Grid.Column="0"
 					Classes="pricePromptTextBlock">
-						new price
+						new price ($)
 					</TextBlock>
 					<TextBox
 					Grid.Row="1"
@@ -1256,7 +1256,8 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateDeflation">
 				calculate
 			</Button>
 			
@@ -1264,7 +1265,8 @@
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="deflationValue">
 			</TextBlock>
 		</StackPanel>
 
@@ -1340,7 +1342,8 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateAppreciationFinal">
 				calculate
 			</Button>
 			
@@ -1348,7 +1351,8 @@
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="appreciationValue">
 			</TextBlock>
 		</StackPanel>
 
@@ -1424,7 +1428,8 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateDepreciationFinal">
 				calculate
 			</Button>
 			
@@ -1432,13 +1437,14 @@
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="depreciationValue">
 			</TextBlock>
 		</StackPanel>
 
 		<StackPanel
 		Name="simpleInterestCalculator"
-		IsVisible="True"
+		IsVisible="False"
 		HorizontalAlignment="Center">
 			<TextBlock
 				Classes="directions"
@@ -1466,7 +1472,7 @@
 					<TextBox
 						Grid.Row="0"
 						Grid.Column="1"
-						Name="simpleInterestPrincipleRate"
+						Name="simpleInterestPrinciple"
 						Classes="priceAnswerTextBox">
 					</TextBox>
 					<TextBlock
@@ -1508,7 +1514,8 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateSimpleInterest">
 				calculate
 			</Button>
 			
@@ -1516,13 +1523,14 @@
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="simpleInterestValue">
 			</TextBlock>
 		</StackPanel>
 
 		<StackPanel
 		Name="compoundInterestCalculator"
-		IsVisible="True"
+		IsVisible="False"
 		HorizontalAlignment="Center">
 			<TextBlock
 				Classes="directions"
@@ -1550,7 +1558,7 @@
 					<TextBox
 						Grid.Row="0"
 						Grid.Column="1"
-						Name="interestOwedPrinciplePriceUserInput"
+						Name="compoundInterestPrinciplePriceUserInput"
 						Classes="priceAnswerTextBox">
 					</TextBox>
 					<TextBlock
@@ -1562,7 +1570,7 @@
 					<TextBox
 					Grid.Row="1"
 					Grid.Column="1"
-					Name="interestOwedInterestRateUserInput"
+					Name="compoundInterestRateUserInput"
 					Classes="percentAnswerTextBox">
 					</TextBox>
 					<TextBlock
@@ -1574,7 +1582,7 @@
 					<TextBox
 					Grid.Row="2"
 					Grid.Column="1"
-					Name="interestOwedYearsIntoFutureUserInput"
+					Name="compoundInterestYearsIntoFutureUserInput"
 					Classes="yearsAnswerTextBox">
 					</TextBox>
 				</Grid>
@@ -1592,7 +1600,8 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateCompoundInterest">
 				calculate
 			</Button>
 			
@@ -1600,7 +1609,8 @@
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="compoundInterestValue">
 			</TextBlock>
 		</StackPanel>
 	</Panel>	
