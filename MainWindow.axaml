@@ -10,8 +10,8 @@
 		<Style Selector="StackPanel.openingStackPanel">
 			<Setter Property="HorizontalAlignment" Value="Center"/>
 		</Style>
-		
-		<Style Selector="Button.openingOptionButtons"> 
+
+		<Style Selector="Button.openingOptionButtons">
 			<Setter Property="HorizontalContentAlignment" Value="Center"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
 			<Setter Property="HorizontalAlignment" Value="Center"/>
@@ -24,7 +24,7 @@
 			<Setter Property="BorderBrush" Value="Snow"/>
 			<Setter Property="Width" Value="200"/>
 			<Setter Property="Height" Value="60"/>
-			<Setter Property="Margin" Value="20,5,20,20"/>	
+			<Setter Property="Margin" Value="20,5,20,20"/>
 		</Style>
 
 		<Style Selector="TextBlock.directions">
@@ -112,7 +112,6 @@
 			<Setter Property="BorderBrush" Value="Snow"/>
 			<Setter Property="Margin" Value="0 5"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
-			<Setter Property="Text" Value="$"/>
 		</Style>
 
 		<Style Selector="TextBlock.pricePromptTextBlock">
@@ -130,7 +129,6 @@
 			<Setter Property="BorderBrush" Value="Snow"/>
 			<Setter Property="Margin" Value="0 5"/>
 			<Setter Property="VerticalContentAlignment" Value="Center"/>
-			<Setter Property="Text" Value="%"/>
 		</Style>
 
 		<Style Selector="TextBox.yearsAnswerTextBox">
@@ -145,8 +143,8 @@
 	</Window.Styles>
 
 	<Panel>
-		<StackPanel Classes="openingStackPanel" 
-			Name="homeStackPanel" 
+		<StackPanel Classes="openingStackPanel"
+			Name="homeStackPanel"
 			IsVisible="False">
 			<TextBlock
 				Padding="20,50,20,20"
@@ -167,106 +165,106 @@
 
 			<Button
 				Classes="openingOptionButtons"
-				Click="archiveClicked"> 
-				learning archive 
+				Click="archiveClicked">
+				learning archive
 			</Button>
-			<Button 
+			<Button
 				Classes="openingOptionButtons"
-				Click="budgetClicked"> 
-				budgeting 
+				Click="budgetClicked">
+				budgeting
 			</Button>
-			
-			<Button 
+
+			<Button
 				Classes="openingOptionButtons"
-				Click="financialCalculatorClicked"> 
-				financial calculators 
+				Click="financialCalculatorClicked">
+				financial calculators
 			</Button>
 		</StackPanel>
 
-		<StackPanel Name="archiveStackPanel" 
-			IsVisible="False" 
+		<StackPanel Name="archiveStackPanel"
+			IsVisible="False"
 			HorizontalAlignment="Center">
 			<TextBlock Classes="directions"
 				FontSize="30"
 				FontWeight="Heavy"
 				TextDecorations="Underline"
-				PointerReleased="returnHome"> 
-				welcome to the archive 
+				PointerReleased="returnHome">
+				welcome to the archive
 			</TextBlock>
 
 			<TextBlock
-				Classes="subtextDirections">	
+				Classes="subtextDirections">
 				use the buttons below to navigate the archive
 			</TextBlock>
 
-			<Grid 
-				RowDefinitions="100, 100, 100" 
-				ColumnDefinitions="150,150, 150" 
+			<Grid
+				RowDefinitions="100, 100, 100"
+				ColumnDefinitions="150,150, 150"
 				Margin="0,50,0,0">
-				<Button 
-					Grid.Row="0" 
-					Grid.Column="0" 
+				<Button
+					Grid.Row="0"
+					Grid.Column="0"
 					Classes="buttonSelection"
-					Click="openInflationArchive"> 
+					Click="openInflationArchive">
 					inflation
 				</Button>
-				<Button 
-					Grid.Row="0" 
-					Grid.Column="1" 
+				<Button
+					Grid.Row="0"
+					Grid.Column="1"
 					Classes="buttonSelection"
 					Click="openDebitVsCreditArchive">
 					debit vs. credit
 				</Button>
-				<Button 
-					Grid.Row="0" 
-					Grid.Column="2" 
+				<Button
+					Grid.Row="0"
+					Grid.Column="2"
 					Classes="buttonSelection"
 					Click="openFinanceInstitutionsArchive">
 					finance institutions
 				</Button>
-				<Button 
-					Grid.Row="1" 
-					Grid.Column="0" 
+				<Button
+					Grid.Row="1"
+					Grid.Column="0"
 					Classes="buttonSelection"
 					Click="openInterestRateArchive">
 					interest rates
 				</Button>
-				<Button 
-					Grid.Row="1" 
-					Grid.Column="1" 
+				<Button
+					Grid.Row="1"
+					Grid.Column="1"
 					Classes="buttonSelection"
 					Click="openTaxesArchive">
 					taxes
 				</Button>
-				<Button 
-					Grid.Row="1" 
-					Grid.Column="2" 
+				<Button
+					Grid.Row="1"
+					Grid.Column="2"
 					Classes="buttonSelection"
 					Click="openMakingDecisionsArchive">
 					making decisions
 				</Button>
-				<Button 
-					Grid.Row="2" 
-					Grid.Column="0" 
+				<Button
+					Grid.Row="2"
+					Grid.Column="0"
 					Classes="buttonSelection"
 					Click="openSettingGoalsArchive">
 					setting goals
 				</Button>
-				<Button 
-					Grid.Row="2" 
-					Grid.Column="1" 
+				<Button
+					Grid.Row="2"
+					Grid.Column="1"
 					Classes="buttonSelection"
 					Click="openingFinanceAccountsArchive">
 					finance accounts
 				</Button>
-				<Button 
-					Grid.Row="2" 
-					Grid.Column="2" 
+				<Button
+					Grid.Row="2"
+					Grid.Column="2"
 					Classes="buttonSelection"
 					Click="openingIncomeArchive">
 					income
 				</Button>
-			</Grid>	
+			</Grid>
 		</StackPanel>
 
 		<StackPanel
@@ -283,16 +281,16 @@
 				budgeting and savings plans
 			</TextBlock>
 
-			<StackPanel 
+			<StackPanel
 				HorizontalAlignment="Center">
-				<Grid 
+				<Grid
 					Margin="5"
 					ColumnDefinitions="175, 100"
 					RowDefinitions="Auto, Auto, Auto">
-					<Label 
+					<Label
 						Classes="incomeOrDebtPromptLabel"
-						Grid.Row="0" Grid.Column="0" 
-						Margin="10"> 
+						Grid.Row="0" Grid.Column="0"
+						Margin="10">
 						annual income ($)
 					</Label>
 					<TextBox
@@ -301,9 +299,9 @@
 						Grid.Row="0"
 						Grid.Column="1">
 					</TextBox>
-					<Label 
-						Classes="incomeOrDebtPromptLabel" 
-						Grid.Row="1" 
+					<Label
+						Classes="incomeOrDebtPromptLabel"
+						Grid.Row="1"
 						Grid.Column="0"
 						Margin="10">
 						debt value ($)
@@ -316,14 +314,14 @@
 					</TextBox>
 				</Grid>
 			</StackPanel>
-			
-			<Separator 
+
+			<Separator
 				Margin="0,2,0,0"
 				Width="5050"
 				Background="Snow"
-				Height="1"> 
+				Height="1">
 			</Separator>
-			
+
 			<StackPanel
 				Orientation="Horizontal">
 				<TextBlock
@@ -333,8 +331,8 @@
 					TextDecorations="Underline">
 					your current budget (%):
 				</TextBlock>
-				
-				<StackPanel>	
+
+				<StackPanel>
 					<Grid
 						Margin="-195,40,10, 30"
 						ColumnDefinitions="130,50,130,50"
@@ -416,7 +414,7 @@
 						</TextBox>
 					</Grid>
 				</StackPanel>
-				
+
 				<Button
 					Background="rgba(255, 221, 239, 0.8)"
 					BorderThickness="2"
@@ -535,105 +533,105 @@
 			</TextBlock>
 			<StackPanel
 				Orientation="Horizontal">
-			<Grid
-				RowDefinitions="30, 30, 30, 30, 30, 30, 30"
-				ColumnDefinitions="130, 70"
-				Margin="-100 30">
-				<TextBlock 
-					Grid.Row="0" 
-					Grid.Column="0"
-					Classes="newBudgetBreakdownTextBlock"> 
-					taxes/mortgage 
-				</TextBlock>
-				<TextBlock
-					Grid.Row="0"
-					Grid.Column="1"
-					Classes="newBudgetBreakdownTextBlock"
-					Name="newTaxOrMortgage">
-					$0
-				</TextBlock>
-				<TextBlock
-					Grid.Row="1"
-					Grid.Column="0"
-					Classes="newBudgetBreakdownTextBlock">
-					utilities
-				</TextBlock>
-				<TextBlock
-					Grid.Row="1"
-					Grid.Column="1"
-					Classes="newBudgetBreakdownTextBlock"
-					Name="newUtilities">
-					$0
-				</TextBlock>
-				<TextBlock
-					Grid.Row="2"
-					Grid.Column="0"
-					Classes="newBudgetBreakdownTextBlock">
-					insurance(s)
-				</TextBlock>
-				<TextBlock
-					Grid.Row="2"
-					Grid.Column="1"
-					Classes="newBudgetBreakdownTextBlock"
-					Name="newInsurance">
-					$0
-				</TextBlock>
-				<TextBlock
-					Grid.Row="3"
-					Grid.Column="0"
-					Classes="newBudgetBreakdownTextBlock">
-					transportation
-				</TextBlock>
-				<TextBlock
-					Grid.Row="3"
-					Grid.Column="1"
-					Classes="newBudgetBreakdownTextBlock"
-					Name="newTransportation">
-					$0
-				</TextBlock>
-				<TextBlock
-					Grid.Row="4"
-					Grid.Column="0"
-					Classes="newBudgetBreakdownTextBlock">
-					food/groceries
-				</TextBlock>
-				<TextBlock
-					Grid.Row="4"
-					Grid.Column="1"
-					Classes="newBudgetBreakdownTextBlock"
-					Name="newFoodOrGroceries">
-					$0
-				</TextBlock>
-				<TextBlock
-					Grid.Row="5"
-					Grid.Column="0"
-					Classes="newBudgetBreakdownTextBlock">
-					other/savings
-				</TextBlock>
-				<TextBlock
-					Grid.Row="5"
-					Grid.Column="1"
-					Classes="newBudgetBreakdownTextBlock"
-					Name="newOtherSpending">
-					$0
-				</TextBlock>
-			</Grid>
-				<Image 
+				<Grid
+					RowDefinitions="30, 30, 30, 30, 30, 30, 30"
+					ColumnDefinitions="130, 70"
+					Margin="-100 30">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="newBudgetBreakdownTextBlock">
+						taxes/mortgage
+					</TextBlock>
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="1"
+						Classes="newBudgetBreakdownTextBlock"
+						Name="newTaxOrMortgage">
+						$0
+					</TextBlock>
+					<TextBlock
+						Grid.Row="1"
+						Grid.Column="0"
+						Classes="newBudgetBreakdownTextBlock">
+						utilities
+					</TextBlock>
+					<TextBlock
+						Grid.Row="1"
+						Grid.Column="1"
+						Classes="newBudgetBreakdownTextBlock"
+						Name="newUtilities">
+						$0
+					</TextBlock>
+					<TextBlock
+						Grid.Row="2"
+						Grid.Column="0"
+						Classes="newBudgetBreakdownTextBlock">
+						insurance(s)
+					</TextBlock>
+					<TextBlock
+						Grid.Row="2"
+						Grid.Column="1"
+						Classes="newBudgetBreakdownTextBlock"
+						Name="newInsurance">
+						$0
+					</TextBlock>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="0"
+						Classes="newBudgetBreakdownTextBlock">
+						transportation
+					</TextBlock>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="1"
+						Classes="newBudgetBreakdownTextBlock"
+						Name="newTransportation">
+						$0
+					</TextBlock>
+					<TextBlock
+						Grid.Row="4"
+						Grid.Column="0"
+						Classes="newBudgetBreakdownTextBlock">
+						food/groceries
+					</TextBlock>
+					<TextBlock
+						Grid.Row="4"
+						Grid.Column="1"
+						Classes="newBudgetBreakdownTextBlock"
+						Name="newFoodOrGroceries">
+						$0
+					</TextBlock>
+					<TextBlock
+						Grid.Row="5"
+						Grid.Column="0"
+						Classes="newBudgetBreakdownTextBlock">
+						other/savings
+					</TextBlock>
+					<TextBlock
+						Grid.Row="5"
+						Grid.Column="1"
+						Classes="newBudgetBreakdownTextBlock"
+						Name="newOtherSpending">
+						$0
+					</TextBlock>
+				</Grid>
+				<Image
 					Source="/assets/chart.png"
 					Width="400"
 					Height="300"
 					Margin="60 -100 -800 0"/>
 			</StackPanel>
-			
+
 			<Separator
 				Background="Snow"
 				Width="500">
 			</Separator>
-			
+
 			<TextBlock
 				Classes="recommendationTextBlock"
 				HorizontalAlignment="Center"
-				Name="recommendation"> 
+				Name="recommendation">
 				no recommendation
 			</TextBlock>
 		</StackPanel>
@@ -647,7 +645,7 @@
 				FontSize="30"
 				FontWeight="DemiBold"
 				TextDecorations="Underline"
-				PointerReleased="returnToArchive"> 
+				PointerReleased="returnToArchive">
 				inflation
 			</TextBlock>
 			<TextBlock
@@ -780,11 +778,11 @@
 			</TextBlock>
 			<TextBlock
 				Classes="archiveInformationTextBlock">
-				6. securities firms pair people and organizations to invest with investors who need money grow businesses 
+				6. securities firms pair people and organizations to invest with investors who need money grow businesses
 			</TextBlock>
 			<TextBlock
 				Classes="archiveInformationTextBlock">
-				7. people can also use check-cashing stores if they don't have financial institutions 
+				7. people can also use check-cashing stores if they don't have financial institutions
 			</TextBlock>
 			<TextBlock
 				Classes="archiveInformationTextBlock">
@@ -822,7 +820,7 @@
 			</TextBlock>
 			<TextBlock
 				Classes="archiveInformationTextBlock">
-				3. for savings accounts, it is the percent of the money in the account that is added for keeping money in 
+				3. for savings accounts, it is the percent of the money in the account that is added for keeping money in
 			</TextBlock>
 			<TextBlock
 				Classes="archiveInformationTextBlock">
@@ -1123,7 +1121,7 @@
 				10. a higher income can also mean a higher standard of living and more purchasing power
 			</TextBlock>
 		</StackPanel>
-		
+
 		<StackPanel
 			Name="inflationCalculator"
 			IsVisible="False"
@@ -1140,16 +1138,16 @@
 			<StackPanel
 				HorizontalAlignment="Center"
 				Margin="0,30,0,20">
-				<Grid 
-					ShowGridLines="False" 
+				<Grid
+					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="100, 100"
-					RowDefinitions="50, 50">
+					ColumnDefinitions="150, 100"
+					RowDefinitions="50, 50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
 						Classes="pricePromptTextBlock">
-						old price
+						old price ($)
 					</TextBlock>
 					<TextBox
 						Grid.Row="0"
@@ -1161,7 +1159,7 @@
 					Grid.Row="1"
 					Grid.Column="0"
 					Classes="pricePromptTextBlock">
-						new price
+						new price ($)
 					</TextBlock>
 					<TextBox
 					Grid.Row="1"
@@ -1169,11 +1167,24 @@
 					Name="inflationNewPriceUserInput"
 					Classes="priceAnswerTextBox">
 					</TextBox>
+					<TextBlock
+						Grid.Row="2"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						inflate rate (%)
+					</TextBlock>
+					<TextBox
+						Grid.Row="2"
+						Grid.Column="1"
+						Classes="priceAnswerTextBox"
+						Name="inflationRateUserInput">
+					</TextBox>
+					
 				</Grid>
 			</StackPanel>
-			
+
 			<Button
-				Margin="100,20,20,20"
+				Margin="100,0,20,20"
 				Width="150"
 				Height="50"
 				Background="rgba(255, 221, 239, 0.8)"
@@ -1184,15 +1195,33 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15"> 
+				FontSize="15"
+				Click="calculateInflation">
 				calculate
 			</Button>
-			
+			<Button
+				Margin="100,-10,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15"
+				Click="inflationSeeGraph">
+				see graph
+			</Button>
+		
 			<TextBlock
-				Margin="95,10,10,10"
+				Margin="95,0,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">			  
+				Foreground="Snow"
+				Name="inflationValue">
 			</TextBlock>
 		</StackPanel>
 
@@ -1215,13 +1244,13 @@
 				<Grid
 					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="100, 100"
-					RowDefinitions="50, 50">
+					ColumnDefinitions="155, 100"
+					RowDefinitions="50, 50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
 						Classes="pricePromptTextBlock">
-						old price
+						old price ($)
 					</TextBlock>
 					<TextBox
 						Grid.Row="0"
@@ -1230,20 +1259,32 @@
 						Classes="priceAnswerTextBox">
 					</TextBox>
 					<TextBlock
-					Grid.Row="1"
-					Grid.Column="0"
-					Classes="pricePromptTextBlock">
-						new price
+						Grid.Row="1"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						new price ($)
 					</TextBlock>
 					<TextBox
-					Grid.Row="1"
-					Grid.Column="1"
-					Name="deflationNewPriceUserInput"
-					Classes="priceAnswerTextBox">
+						Grid.Row="1"
+						Grid.Column="1"
+						Name="deflationNewPriceUserInput"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+						Grid.Row="2"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						deflate rate (%)
+					</TextBlock>
+					<TextBox
+						Grid.Row="2"
+						Grid.Column="1"
+						Classes="priceAnswerTextBox"
+						Name="deflateRateUserInput">
 					</TextBox>
 				</Grid>
 			</StackPanel>
-			
+
 			<Button
 				Margin="100,20,20,20"
 				Width="150"
@@ -1256,15 +1297,33 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateDeflation">
 				calculate
 			</Button>
-			
+			<Button
+			Margin="100,0,20,20"
+			Width="150"
+			Height="50"
+			Background="rgba(255, 221, 239, 0.8)"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			CornerRadius="50"
+			BorderThickness="2"
+			BorderBrush="Snow"
+			FontWeight="DemiBold"
+			Foreground="Snow"
+			FontSize="15"
+			Click="deflationSeeGraph">
+				see graph
+			</Button>
+
 			<TextBlock
-				Margin="95,10,10,10"
+				Margin="95,0,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="deflationValue">
 			</TextBlock>
 		</StackPanel>
 
@@ -1283,17 +1342,17 @@
 
 			<StackPanel
 				HorizontalAlignment="Center"
-				Margin="0,30,0,20">
+				Margin="0,-10,0,20">
 				<Grid
 					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="200, 200"
-					RowDefinitions="50, 50, 50">
+					ColumnDefinitions="210, 200"
+					RowDefinitions="50, 50, 50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
 						Classes="pricePromptTextBlock">
-						original price
+						original price ($)
 					</TextBlock>
 					<TextBox
 						Grid.Row="0"
@@ -1305,7 +1364,7 @@
 					Grid.Row="1"
 					Grid.Column="0"
 					Classes="pricePromptTextBlock">
-						appreciation rate
+						appreciation rate (%)
 					</TextBlock>
 					<TextBox
 					Grid.Row="1"
@@ -1320,16 +1379,28 @@
 						years into future
 					</TextBlock>
 					<TextBox
-					Grid.Row="2"
-					Grid.Column="1"
-					Name="appreciationYearsIntoFuture"
-					Classes="yearsAnswerTextBox">
+						Grid.Row="2"
+						Grid.Column="1"
+						Name="appreciationYearsIntoFuture"
+						Classes="yearsAnswerTextBox">
+					</TextBox>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						future value ($)
+					</TextBlock>
+					<TextBox
+						Grid.Row="3"
+						Grid.Column="1"
+						Classes="yearsAnswerTextBox"
+						Name="appreciationFutureValueUserInput">
 					</TextBox>
 				</Grid>
 			</StackPanel>
-			
+
 			<Button
-				Margin="100,20,20,20"
+				Margin="100,0,20,5"
 				Width="150"
 				Height="50"
 				Background="rgba(255, 221, 239, 0.8)"
@@ -1340,15 +1411,33 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateAppreciationFinal">
 				calculate
 			</Button>
-			
+			<Button
+				Margin="100,0,0,0"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15"
+				Click="appreciationSeeGraph">
+				see graph
+			</Button>
+
 			<TextBlock
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="appreciationValue">
 			</TextBlock>
 		</StackPanel>
 
@@ -1367,17 +1456,17 @@
 
 			<StackPanel
 				HorizontalAlignment="Center"
-				Margin="0,30,0,20">
+				Margin="0,-10,0,20">
 				<Grid
 					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="200, 200"
-					RowDefinitions="50, 50, 50">
+					ColumnDefinitions="220, 200"
+					RowDefinitions="50, 50, 50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
 						Classes="pricePromptTextBlock">
-						original price
+						original price ($)
 					</TextBlock>
 					<TextBox
 						Grid.Row="0"
@@ -1389,7 +1478,7 @@
 					Grid.Row="1"
 					Grid.Column="0"
 					Classes="pricePromptTextBlock">
-						depreciation rate
+						depreciation rate (%)
 					</TextBlock>
 					<TextBox
 					Grid.Row="1"
@@ -1409,11 +1498,22 @@
 					Name="depreciationYearsIntoFuture"
 					Classes="yearsAnswerTextBox">
 					</TextBox>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						future value ($)
+					</TextBlock>
+					<TextBox
+						Grid.Row="3"
+						Grid.Column="1"
+						Name="depreciationFutureValueUserInput"
+						Classes="yearsAnswerTextBox"/>
 				</Grid>
 			</StackPanel>
-			
+
 			<Button
-				Margin="100,20,20,20"
+				Margin="100,0,20,5"
 				Width="150"
 				Height="50"
 				Background="rgba(255, 221, 239, 0.8)"
@@ -1424,21 +1524,39 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateDepreciationFinal">
 				calculate
 			</Button>
-			
+			<Button
+			Margin="100,0,0,0"
+			Width="150"
+			Height="50"
+			Background="rgba(255, 221, 239, 0.8)"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+			CornerRadius="50"
+			BorderThickness="2"
+			BorderBrush="Snow"
+			FontWeight="DemiBold"
+			Foreground="Snow"
+			FontSize="15"
+			Click="depreciationSeeGraph">
+				see graph
+			</Button>
+
 			<TextBlock
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="depreciationValue">
 			</TextBlock>
 		</StackPanel>
 
 		<StackPanel
 		Name="simpleInterestCalculator"
-		IsVisible="True"
+		IsVisible="False"
 		HorizontalAlignment="Center">
 			<TextBlock
 				Classes="directions"
@@ -1451,12 +1569,12 @@
 
 			<StackPanel
 				HorizontalAlignment="Center"
-				Margin="0,30,0,20">
+				Margin="0,-10,0,20">
 				<Grid
 					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="200, 200"
-					RowDefinitions="50, 50, 50">
+					ColumnDefinitions="220, 200"
+					RowDefinitions="50, 50, 50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
@@ -1466,14 +1584,14 @@
 					<TextBox
 						Grid.Row="0"
 						Grid.Column="1"
-						Name="simpleInterestPrincipleRate"
+						Name="simpleInterestPrinciple"
 						Classes="priceAnswerTextBox">
 					</TextBox>
 					<TextBlock
 					Grid.Row="1"
 					Grid.Column="0"
 					Classes="pricePromptTextBlock">
-						interest rate
+						interest rate (%)
 					</TextBlock>
 					<TextBox
 					Grid.Row="1"
@@ -1493,11 +1611,23 @@
 					Name="simpleInterestYearsFutureUserInput"
 					Classes="yearsAnswerTextBox">
 					</TextBox>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						future value ($)
+					</TextBlock>
+					<TextBox
+						Grid.Row="3"
+						Grid.Column="1"
+						Classes="yearsAnswerTextBox"
+						Name="simpleInterestFutureValueUserInput">
+					</TextBox>
 				</Grid>
 			</StackPanel>
-			
+
 			<Button
-				Margin="100,20,20,20"
+				Margin="100,0,20,5"
 				Width="150"
 				Height="50"
 				Background="rgba(255, 221, 239, 0.8)"
@@ -1508,15 +1638,33 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateSimpleInterest">
 				calculate
 			</Button>
-			
+			<Button
+				Margin="100,0,0,0"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15"
+				Click="simpleInterestSeeGraph">
+				see graph
+			</Button>
+
 			<TextBlock
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="simpleInterestValue">
 			</TextBlock>
 		</StackPanel>
 
@@ -1535,12 +1683,12 @@
 
 			<StackPanel
 				HorizontalAlignment="Center"
-				Margin="0,30,0,20">
+				Margin="0,-10,0,20">
 				<Grid
 					ShowGridLines="False"
 					Margin="5"
-					ColumnDefinitions="200, 200"
-					RowDefinitions="50, 50, 50">
+					ColumnDefinitions="210, 200"
+					RowDefinitions="50, 50, 50, 50">
 					<TextBlock
 						Grid.Row="0"
 						Grid.Column="0"
@@ -1550,7 +1698,7 @@
 					<TextBox
 						Grid.Row="0"
 						Grid.Column="1"
-						Name="interestOwedPrinciplePriceUserInput"
+						Name="compoundInterestPrinciplePriceUserInput"
 						Classes="priceAnswerTextBox">
 					</TextBox>
 					<TextBlock
@@ -1562,7 +1710,7 @@
 					<TextBox
 					Grid.Row="1"
 					Grid.Column="1"
-					Name="interestOwedInterestRateUserInput"
+					Name="compoundInterestRateUserInput"
 					Classes="percentAnswerTextBox">
 					</TextBox>
 					<TextBlock
@@ -1574,14 +1722,25 @@
 					<TextBox
 					Grid.Row="2"
 					Grid.Column="1"
-					Name="interestOwedYearsIntoFutureUserInput"
+					Name="compoundInterestYearsIntoFutureUserInput"
 					Classes="yearsAnswerTextBox">
 					</TextBox>
+					<TextBlock
+						Grid.Row="3"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						future value ($)
+					</TextBlock>
+					<TextBox
+						Grid.Row="3"
+						Grid.Column="1"
+						Classes="yearsAnswerTextBox"
+						Name="compoundInterestFutureValueUserInput"></TextBox>
 				</Grid>
 			</StackPanel>
-			
+
 			<Button
-				Margin="100,20,20,20"
+				Margin="100,0,20,5"
 				Width="150"
 				Height="50"
 				Background="rgba(255, 221, 239, 0.8)"
@@ -1592,16 +1751,35 @@
 				BorderBrush="Snow"
 				FontWeight="DemiBold"
 				Foreground="Snow"
-				FontSize="15">
+				FontSize="15"
+				Click="calculateCompoundInterest">
 				calculate
+			</Button>
+
+			<Button
+				Margin="100,0,0,0"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15"
+				Click="compoundInterestSeeGraph">
+				see graph
 			</Button>
 			
 			<TextBlock
 				Margin="95,10,10,10"
 				FontWeight="DemiBold"
 				FontSize="15"
-				Foreground="Snow">
+				Foreground="Snow"
+				Name="compoundInterestValue">
 			</TextBlock>
 		</StackPanel>
-	</Panel>	
+	</Panel>
 </Window>
