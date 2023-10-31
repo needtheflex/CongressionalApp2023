@@ -1,0 +1,1607 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="lockedIn.MainWindow"
+		Background="Pink"
+        Title="lockedIn">
+	<Window.Styles>
+		<Style Selector="StackPanel.openingStackPanel">
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+		
+		<Style Selector="Button.openingOptionButtons"> 
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="Background" Value="rgba(255, 221, 239, 0.8)"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="CornerRadius" Value="50"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="Width" Value="200"/>
+			<Setter Property="Height" Value="60"/>
+			<Setter Property="Margin" Value="20,5,20,20"/>	
+		</Style>
+
+		<Style Selector="TextBlock.directions">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="Padding" Value="20,20,20,20"/>
+		</Style>
+
+		<Style Selector="TextBlock.subtextDirections">
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="FontSize" Value="20"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+		</Style>
+
+		<Style Selector="Button.buttonSelection">
+			<Setter Property="Margin" Value="10,10,10,10"/>
+			<Setter Property="Padding" Value="10,10,10,10"/>
+			<Setter Property="Height" Value="50"/>
+			<Setter Property="Width" Value="150"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="CornerRadius" Value="50"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="Background" Value="rgba(255, 221, 239, 0.8)"/>
+			<Setter Property="Foreground" Value="Snow"/>
+		</Style>
+
+		<Style Selector="Label.incomeOrDebtPromptLabel">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		</Style>
+
+		<Style Selector="TextBox.incomeOrDebtAnswerTextBox">
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="Margin" Value="0 5"/>
+			<Setter Property="Foreground" Value="Snow"/>
+		</Style>
+
+		<Style Selector="TextBlock.currentBudgetPromptTextBlock">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="Margin" Value="15 10"/>
+		</Style>
+
+		<Style Selector="TextBox.currentBudgetAnswerTextBox">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="CornerRadius" Value="5"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="Margin" Value="0 5"/>
+		</Style>
+
+		<Style Selector="TextBlock.newBudgetBreakdownTextBlock">
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+		</Style>
+
+		<Style Selector="TextBlock.recommendationTextBlock">
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="Margin" Value="5"/>
+		</Style>
+
+		<Style Selector="TextBlock.archiveInformationTextBlock">
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontSize" Value="15"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="Margin" Value="15 7"/>
+		</Style>
+
+		<Style Selector="TextBox.priceAnswerTextBox">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="CornerRadius" Value="5"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="Margin" Value="0 5"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Text" Value="$"/>
+		</Style>
+
+		<Style Selector="TextBlock.pricePromptTextBlock">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="FontSize" Value="20"/>
+		</Style>
+
+		<Style Selector="TextBox.percentAnswerTextBox">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="CornerRadius" Value="5"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="Margin" Value="0 5"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+			<Setter Property="Text" Value="%"/>
+		</Style>
+
+		<Style Selector="TextBox.yearsAnswerTextBox">
+			<Setter Property="FontWeight" Value="DemiBold"/>
+			<Setter Property="Foreground" Value="Snow"/>
+			<Setter Property="CornerRadius" Value="5"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="BorderBrush" Value="Snow"/>
+			<Setter Property="Margin" Value="0 5"/>
+			<Setter Property="VerticalContentAlignment" Value="Center"/>
+		</Style>
+	</Window.Styles>
+
+	<Panel>
+		<StackPanel Classes="openingStackPanel" 
+			Name="homeStackPanel" 
+			IsVisible="False">
+			<TextBlock
+				Padding="20,50,20,20"
+				FontSize="25"
+				FontWeight="ExtraBold"
+				Foreground="Snow">
+				welcome to "trolli strawberry puffs"
+			</TextBlock>
+
+			<TextBlock
+				Padding="20,0,20,20"
+				HorizontalAlignment="Center"
+				FontSize="20"
+				FontWeight="SemiBold"
+				Foreground="Snow">
+				use the buttons below to navigate
+			</TextBlock>
+
+			<Button
+				Classes="openingOptionButtons"
+				Click="archiveClicked"> 
+				learning archive 
+			</Button>
+			<Button 
+				Classes="openingOptionButtons"
+				Click="budgetClicked"> 
+				budgeting 
+			</Button>
+			
+			<Button 
+				Classes="openingOptionButtons"
+				Click="financialCalculatorClicked"> 
+				financial calculators 
+			</Button>
+		</StackPanel>
+
+		<StackPanel Name="archiveStackPanel" 
+			IsVisible="False" 
+			HorizontalAlignment="Center">
+			<TextBlock Classes="directions"
+				FontSize="30"
+				FontWeight="Heavy"
+				TextDecorations="Underline"
+				PointerReleased="returnHome"> 
+				welcome to the archive 
+			</TextBlock>
+
+			<TextBlock
+				Classes="subtextDirections">	
+				use the buttons below to navigate the archive
+			</TextBlock>
+
+			<Grid 
+				RowDefinitions="100, 100, 100" 
+				ColumnDefinitions="150,150, 150" 
+				Margin="0,50,0,0">
+				<Button 
+					Grid.Row="0" 
+					Grid.Column="0" 
+					Classes="buttonSelection"
+					Click="openInflationArchive"> 
+					inflation
+				</Button>
+				<Button 
+					Grid.Row="0" 
+					Grid.Column="1" 
+					Classes="buttonSelection"
+					Click="openDebitVsCreditArchive">
+					debit vs. credit
+				</Button>
+				<Button 
+					Grid.Row="0" 
+					Grid.Column="2" 
+					Classes="buttonSelection"
+					Click="openFinanceInstitutionsArchive">
+					finance institutions
+				</Button>
+				<Button 
+					Grid.Row="1" 
+					Grid.Column="0" 
+					Classes="buttonSelection"
+					Click="openInterestRateArchive">
+					interest rates
+				</Button>
+				<Button 
+					Grid.Row="1" 
+					Grid.Column="1" 
+					Classes="buttonSelection"
+					Click="openTaxesArchive">
+					taxes
+				</Button>
+				<Button 
+					Grid.Row="1" 
+					Grid.Column="2" 
+					Classes="buttonSelection"
+					Click="openMakingDecisionsArchive">
+					making decisions
+				</Button>
+				<Button 
+					Grid.Row="2" 
+					Grid.Column="0" 
+					Classes="buttonSelection"
+					Click="openSettingGoalsArchive">
+					setting goals
+				</Button>
+				<Button 
+					Grid.Row="2" 
+					Grid.Column="1" 
+					Classes="buttonSelection"
+					Click="openingFinanceAccountsArchive">
+					finance accounts
+				</Button>
+				<Button 
+					Grid.Row="2" 
+					Grid.Column="2" 
+					Classes="buttonSelection"
+					Click="openingIncomeArchive">
+					income
+				</Button>
+			</Grid>	
+		</StackPanel>
+
+		<StackPanel
+			Name="budgetingAndSavingsStackPanel"
+			IsVisible="False"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				HorizontalAlignment="Center"
+				PointerReleased="returnHome">
+				budgeting and savings plans
+			</TextBlock>
+
+			<StackPanel 
+				HorizontalAlignment="Center">
+				<Grid 
+					Margin="5"
+					ColumnDefinitions="175, 100"
+					RowDefinitions="Auto, Auto, Auto">
+					<Label 
+						Classes="incomeOrDebtPromptLabel"
+						Grid.Row="0" Grid.Column="0" 
+						Margin="10"> 
+						annual income ($)
+					</Label>
+					<TextBox
+						Classes="incomeOrDebtAnswerTextBox"
+						Name="annualIncomeUserInput"
+						Grid.Row="0"
+						Grid.Column="1">
+					</TextBox>
+					<Label 
+						Classes="incomeOrDebtPromptLabel" 
+						Grid.Row="1" 
+						Grid.Column="0"
+						Margin="10">
+						debt value ($)
+					</Label>
+					<TextBox
+						Grid.Row="1"
+						Grid.Column="1"
+						Name="debtUserInput"
+						Classes="incomeOrDebtAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Separator 
+				Margin="0,2,0,0"
+				Width="5050"
+				Background="Snow"
+				Height="1"> 
+			</Separator>
+			
+			<StackPanel
+				Orientation="Horizontal">
+				<TextBlock
+					Margin="50,5,10,10"
+					FontWeight="DemiBold"
+					Foreground="Snow"
+					TextDecorations="Underline">
+					your current budget (%):
+				</TextBlock>
+				
+				<StackPanel>	
+					<Grid
+						Margin="-195,40,10, 30"
+						ColumnDefinitions="130,50,130,50"
+						RowDefinitions="40, 40, 40, 40, 40, 40">
+						<TextBlock
+							Grid.Row="0"
+							Grid.Column="0"
+							Classes="currentBudgetPromptTextBlock">
+							mortgage/rent
+						</TextBlock>
+						<TextBox
+							Grid.Row="0"
+							Grid.Column="1"
+							Name="mortgageOrRentUserInput"
+							Classes="currentBudgetAnswerTextBox">
+						</TextBox>
+						<TextBlock
+							Grid.Row="1"
+							Grid.Column="0"
+							Classes="currentBudgetPromptTextBlock">
+							utilities
+						</TextBlock>
+						<TextBox
+							Grid.Row="1"
+							Grid.Column="1"
+							Classes="currentBudgetAnswerTextBox"
+							Name="utilitiesUserInput">
+						</TextBox>
+						<TextBlock
+						Grid.Row="2"
+						Grid.Column="0"
+						Classes="currentBudgetPromptTextBlock">
+							insurance(s)
+						</TextBlock>
+						<TextBox
+						Grid.Row="2"
+						Grid.Column="1"
+						Classes="currentBudgetAnswerTextBox"
+						Name="insurancesUserInput">
+						</TextBox>
+						<TextBlock
+						Grid.Row="0"
+						Grid.Column="2"
+						Classes="currentBudgetPromptTextBlock"
+						HorizontalAlignment="Center">
+							transportation
+						</TextBlock>
+						<TextBox
+						Grid.Row="0"
+						Grid.Column="3"
+						Classes="currentBudgetAnswerTextBox"
+						Name="transportationUserInput">
+						</TextBox>
+						<TextBlock
+							Grid.Row="1"
+							Grid.Column="2"
+							Classes="currentBudgetPromptTextBlock"
+							HorizontalAlignment="Center">
+							food/groceries
+						</TextBlock>
+						<TextBox
+						Grid.Row="1"
+						Grid.Column="3"
+						Classes="currentBudgetAnswerTextBox"
+						Name="foodAndGroceriesUserInput">
+						</TextBox>
+						<TextBlock
+							Grid.Row="2"
+							Grid.Column="2"
+							Classes="currentBudgetPromptTextBlock"
+							HorizontalAlignment="Center">
+							other spending
+						</TextBlock>
+						<TextBox
+						Grid.Row="2"
+						Grid.Column="3"
+						Classes="currentBudgetAnswerTextBox"
+						Name="otherSpendingUserInput">
+						</TextBox>
+					</Grid>
+				</StackPanel>
+				
+				<Button
+					Background="rgba(255, 221, 239, 0.8)"
+					BorderThickness="2"
+					BorderBrush="Snow"
+					CornerRadius="50"
+					Height="50"
+					Width="250"
+					HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"
+					FontWeight="DemiBold"
+					Foreground="Snow"
+					Margin="250, -100, 0, 0"
+					Click="goToBudgetCalculationsStackPanel">
+					calculate new budget
+				</Button>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel
+			Name="financialCalculatorsStackPanel"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				PointerReleased="returnHome"
+				TextDecorations="Underline">
+				financial calculators
+			</TextBlock>
+
+			<TextBlock
+				Classes="subtextDirections">
+				use the buttons below to pick a calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center">
+				<Grid
+				RowDefinitions="100, 100, 100"
+				ColumnDefinitions="150,150, 150"
+				Margin="0,50,0,0">
+					<Button
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="buttonSelection"
+						Click="openInflationCalculator">
+						inflation rate
+					</Button>
+					<Button
+						Grid.Row="0"
+						Grid.Column="1"
+						Classes="buttonSelection"
+						Click="openDepreciationCalculator">
+						depreciation rate
+					</Button>
+					<Button
+						Grid.Row="0"
+						Grid.Column="2"
+						Classes="buttonSelection"
+						Click="openAppreciationCalculator">
+						appreciation rate
+					</Button>
+					<Button
+						Grid.Row="1"
+						Grid.Column="0"
+						Classes="buttonSelection"
+						Click="openDeflationCalculator">
+						deflation rate
+					</Button>
+					<Button
+						Grid.Row="1"
+						Grid.Column="1"
+						Classes="buttonSelection"
+						Click="openSimpleInterestCalculator">
+						simple interest
+					</Button>
+					<Button
+						Grid.Row="1"
+						Grid.Column="2"
+						Classes="buttonSelection"
+						Click="openCompoundInterestCalculator">
+						compound interest
+					</Button>
+				</Grid>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel
+			Name="budgetCalculationStackPanel"
+			HorizontalAlignment="Center"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToBudgetStackPanel">
+				budget breakdown
+			</TextBlock>
+
+			<TextBlock
+				FontWeight="SemiBold"
+				FontSize="20"
+				Margin="-100 5"
+				Foreground="Snow"
+				Name="assets">
+				assets: $0
+			</TextBlock>
+			<TextBlock
+				FontWeight="SemiBold"
+				FontSize="20"
+				Margin="-100 0"
+				Foreground="Snow"
+				Name="income">
+				income: $0
+			</TextBlock>
+			<StackPanel
+				Orientation="Horizontal">
+			<Grid
+				RowDefinitions="30, 30, 30, 30, 30, 30, 30"
+				ColumnDefinitions="130, 70"
+				Margin="-100 30">
+				<TextBlock 
+					Grid.Row="0" 
+					Grid.Column="0"
+					Classes="newBudgetBreakdownTextBlock"> 
+					taxes/mortgage 
+				</TextBlock>
+				<TextBlock
+					Grid.Row="0"
+					Grid.Column="1"
+					Classes="newBudgetBreakdownTextBlock"
+					Name="newTaxOrMortgage">
+					$0
+				</TextBlock>
+				<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="newBudgetBreakdownTextBlock">
+					utilities
+				</TextBlock>
+				<TextBlock
+					Grid.Row="1"
+					Grid.Column="1"
+					Classes="newBudgetBreakdownTextBlock"
+					Name="newUtilities">
+					$0
+				</TextBlock>
+				<TextBlock
+					Grid.Row="2"
+					Grid.Column="0"
+					Classes="newBudgetBreakdownTextBlock">
+					insurance(s)
+				</TextBlock>
+				<TextBlock
+					Grid.Row="2"
+					Grid.Column="1"
+					Classes="newBudgetBreakdownTextBlock"
+					Name="newInsurance">
+					$0
+				</TextBlock>
+				<TextBlock
+					Grid.Row="3"
+					Grid.Column="0"
+					Classes="newBudgetBreakdownTextBlock">
+					transportation
+				</TextBlock>
+				<TextBlock
+					Grid.Row="3"
+					Grid.Column="1"
+					Classes="newBudgetBreakdownTextBlock"
+					Name="newTransportation">
+					$0
+				</TextBlock>
+				<TextBlock
+					Grid.Row="4"
+					Grid.Column="0"
+					Classes="newBudgetBreakdownTextBlock">
+					food/groceries
+				</TextBlock>
+				<TextBlock
+					Grid.Row="4"
+					Grid.Column="1"
+					Classes="newBudgetBreakdownTextBlock"
+					Name="newFoodOrGroceries">
+					$0
+				</TextBlock>
+				<TextBlock
+					Grid.Row="5"
+					Grid.Column="0"
+					Classes="newBudgetBreakdownTextBlock">
+					other/savings
+				</TextBlock>
+				<TextBlock
+					Grid.Row="5"
+					Grid.Column="1"
+					Classes="newBudgetBreakdownTextBlock"
+					Name="newOtherSpending">
+					$0
+				</TextBlock>
+			</Grid>
+				<Image 
+					Source="/assets/chart.png"
+					Width="400"
+					Height="300"
+					Margin="60 -100 -800 0"/>
+			</StackPanel>
+			
+			<Separator
+				Background="Snow"
+				Width="500">
+			</Separator>
+			
+			<TextBlock
+				Classes="recommendationTextBlock"
+				HorizontalAlignment="Center"
+				Name="recommendation"> 
+				no recommendation
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="inflationArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive"> 
+				inflation
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. inflation occurs when there is too much money in the economic circulation
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. essentially, your money is worth less
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. when all people have more money, prices go up so suppliers can make more relative profit
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. to battle inflation, the government increases taxes people have to pay
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. increase of taxes result in less spending money people have. that means: less money in the circulation
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. to calculate inflation rate, look at a product price from two different years (same product)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. take the difference, divide it by the original price. multiply the quotient by one hundred for the rate
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. when all people have more money, prices go up so suppliers can make more relative profit
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9. a negative inflation rate signals deflation (your money is worth more)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10.inflation usually occurs when there is high demand for something
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+		HorizontalAlignment="Center"
+		Name="debitvsCreditArchive"
+		IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				debit vs. credit
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. debit cards allow someone to withdraw direct funds from their account
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. credit cards allow you to take a small loan from the credit company
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. for credit cards, you have to pay the credit owed at the end of whatever period specifed
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. the credit score describes how well you take care of your credit card, like when you repay the credit
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. credit decrease your assets (as they are essentially small loans)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. debit increases your assets (as they are directly linked to your account)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. debit cards can decrease liability, revenue, and equity accounts
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. credit cards can increase liability, revenue, and equity accounts
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9. if you do not repay the credit owed, your credit score is hurt (and lowers)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10.credit card debt is a real issue! ensure you can repay your credit every month
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+		HorizontalAlignment="Center"
+		Name="financeInstitutionsArchive"
+		IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				financial institutions
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. consumers save, spend, borrow, and invest with financial institutions
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. a commercial bank accepts deposit from its customers and, in turn, provides loans to its customers
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. a credit union is operated on a not-for-profit basis and is owned by its members
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. credit unions are similar to a bank in that it accepts deposits and make loans
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. there are banks specialized for savings and loans (savings and loans banks)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. securities firms pair people and organizations to invest with investors who need money grow businesses 
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. people can also use check-cashing stores if they don't have financial institutions 
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. check-cashing stores and alternatives also provide a faster access to loans
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9. another alternative are payday loans (however, interest rates are high in repaying the loan)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10.financial institutions are typically safer than these alternatives
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="interestRatesArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				interest rates
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. interest rates are associated with savings accounts and loans
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. for interests rates and loans, it is the percent of the loan you owe, in addition to the loan itself
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. for savings accounts, it is the percent of the money in the account that is added for keeping money in 
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. interest rates can be compounded or simple
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. simple interest is the percent of the original money owed/put in (loan/savings). this amount is constant
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. compound interest is the percent of the money owed/put in at that moment in time, not the initial amount
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. for compound interest, the amount added to the principle value owed/put in usually increases
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. as a result, savings accounts with compounded interest grow a lot faster
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9. on the other hand, loans with compounded interest are harder to pay off than simple interset
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10. interest rates are a big part of finding the best loans/financial institutions
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="taxesArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				taxes
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. while tedious, taxes help fund the government and are necessary
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. the government also controls the money supply via taxes
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. there are three levels of taxes: government, state, and local
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. the higher the taxes, the less money supply. the lower the taxes, the more money supply
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. tax rates are usually determined on the annual income and household members
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. the government can take taxes directly from the paycheck (like paychecks)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. companies + local governments also use sales taxes on products to increase their profit/funding
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. if a person does not pay their taxes or is of high suspicion, the IRS will investigate them
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9. another alternative are payday loans (however, interest rates are high in repaying the loan)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10. people can also meet criteria for tax deductions, reducing tax owed
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="makingDecisionsArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				making decisions
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. always consider your assets (what you have) and liabilities (what you owe)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. consider if something is in your standard of living? is it a luxury or a necessity?
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. if you are considering a loan, look at the interest rate and time to repay the loan
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. for housing, consider an apartment (flexible if you want to move) and a house (flexible for customization)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. for cars, remember that a car instantly depreciates at first use
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. for insurance, look at the benefits. look at the annual payment. APR? copayments?
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. always remember to have multiple plans. think of the pros and cons.
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. ensure you can maintain whatever you buy. house/car maintenance, premiums, etc.
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9. consider the financial aids, like for tuitions, FAFSA can help. deductibles exist, exemptions, etc.
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10. research thoroughly for alternatives.
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="settingGoalsArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				setting goals
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. goals can be long-term or short-term
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. short-term goals include paying for a vacation, car maintenance, etc.
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. to set a goal, understand your inflow and your outflow. keep track of what you earn and spend
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. ensure to keep a realistic goal
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. short-term goals can be achieved in a year or less (any longer is a long-term goal)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. always remember to maintain an emergency fund in addition to the goal
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. a way to start goals is to start saving, like buying cheaper alternatives
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. put whatever you saved from your goal into an interest-bearing account
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9.  the consider interest, inflation, and appreciation rates when planning a goal
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10. goals can be long-term as well, like paying for a car, a house, or tuition
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="financeAccountsArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				finance accounts
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. many different types of bank/finance accounts for different purposes
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. a common type is a savings account, where you put money into it and it accumulates interest
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3.savings accounts have a limit of how many times you can withdraw monthly
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. a penalty will occur if you withdraw too many times from a savings account
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. another common type of account is a checking account
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6.checking accounts allow you to withdraw money, like for a debit card or ATM
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7. if you withdraw more money than what's in your account, an overdraft fee will occur (like a penalty)
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. there are also accounts specialized for retirement funds, like an IRA
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9.  savings accounts can be used as investment accounts, though growth can be slow
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10. accounts can also be joint, meaning multiple people manage it
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			HorizontalAlignment="Center"
+			Name="incomeArchive"
+			IsVisible="False">
+			<TextBlock
+				Classes="directions"
+				FontSize="30"
+				FontWeight="DemiBold"
+				TextDecorations="Underline"
+				PointerReleased="returnToArchive">
+				income
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				1. annual income is how much money you earn a year (usually from a job), minus taxes
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				2. the higher your income, the more you can afford
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				3. a good way to increase your income is to increase your human capital
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				4. human capital can be increased by higher education and soft workplace skills
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				5. soft skills include a collaborative skillset, good decision making, and more
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				6. your income can also determine your tax rate
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				7.  income should not be the only factor to decide a job
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				8. others things, like benefits, can also help you decide on a job
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				9.  remember that the government deducts taxes from the paycheck, lowering your income
+			</TextBlock>
+			<TextBlock
+				Classes="archiveInformationTextBlock">
+				10. a higher income can also mean a higher standard of living and more purchasing power
+			</TextBlock>
+		</StackPanel>
+		
+		<StackPanel
+			Name="inflationCalculator"
+			IsVisible="False"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontWeight="DemiBold"
+				FontSize="30"
+				TextDecorations="Underline"
+				PointerReleased="returnToFinancialCalculator">
+				inflation calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center"
+				Margin="0,30,0,20">
+				<Grid 
+					ShowGridLines="False" 
+					Margin="5"
+					ColumnDefinitions="100, 100"
+					RowDefinitions="50, 50">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						old price
+					</TextBlock>
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						Name="inflationOldPriceUserInput"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						new price
+					</TextBlock>
+					<TextBox
+					Grid.Row="1"
+					Grid.Column="1"
+					Name="inflationNewPriceUserInput"
+					Classes="priceAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Button
+				Margin="100,20,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15"> 
+				calculate
+			</Button>
+			
+			<TextBlock
+				Margin="95,10,10,10"
+				FontWeight="DemiBold"
+				FontSize="15"
+				Foreground="Snow">			  
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			Name="deflationCalculator"
+			IsVisible="False"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontWeight="DemiBold"
+				FontSize="30"
+				TextDecorations="Underline"
+				PointerReleased="returnToFinancialCalculator">
+				deflation calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center"
+				Margin="0,30,0,20">
+				<Grid
+					ShowGridLines="False"
+					Margin="5"
+					ColumnDefinitions="100, 100"
+					RowDefinitions="50, 50">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						old price
+					</TextBlock>
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						Name="deflationOldPriceUserInput"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						new price
+					</TextBlock>
+					<TextBox
+					Grid.Row="1"
+					Grid.Column="1"
+					Name="deflationNewPriceUserInput"
+					Classes="priceAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Button
+				Margin="100,20,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15">
+				calculate
+			</Button>
+			
+			<TextBlock
+				Margin="95,10,10,10"
+				FontWeight="DemiBold"
+				FontSize="15"
+				Foreground="Snow">
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			Name="appreciationCalculator"
+			IsVisible="False"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontWeight="DemiBold"
+				FontSize="30"
+				TextDecorations="Underline"
+				PointerReleased="returnToFinancialCalculator">
+				appreciation calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center"
+				Margin="0,30,0,20">
+				<Grid
+					ShowGridLines="False"
+					Margin="5"
+					ColumnDefinitions="200, 200"
+					RowDefinitions="50, 50, 50">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						original price
+					</TextBlock>
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						Name="appreciationOriginalPriceUserInput"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						appreciation rate
+					</TextBlock>
+					<TextBox
+					Grid.Row="1"
+					Grid.Column="1"
+					Name="appreciationRateUserInput"
+					Classes="percentAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="2"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						years into future
+					</TextBlock>
+					<TextBox
+					Grid.Row="2"
+					Grid.Column="1"
+					Name="appreciationYearsIntoFuture"
+					Classes="yearsAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Button
+				Margin="100,20,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15">
+				calculate
+			</Button>
+			
+			<TextBlock
+				Margin="95,10,10,10"
+				FontWeight="DemiBold"
+				FontSize="15"
+				Foreground="Snow">
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+			Name="depreciationCalculator"
+			IsVisible="False"
+			HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontWeight="DemiBold"
+				FontSize="30"
+				TextDecorations="Underline"
+				PointerReleased="returnToFinancialCalculator">
+				depreciation calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center"
+				Margin="0,30,0,20">
+				<Grid
+					ShowGridLines="False"
+					Margin="5"
+					ColumnDefinitions="200, 200"
+					RowDefinitions="50, 50, 50">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						original price
+					</TextBlock>
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						Name="depreciationOriginalPriceUserInput"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						depreciation rate
+					</TextBlock>
+					<TextBox
+					Grid.Row="1"
+					Grid.Column="1"
+					Name="depreciationRateUserInput"
+					Classes="percentAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="2"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						years into future
+					</TextBlock>
+					<TextBox
+					Grid.Row="2"
+					Grid.Column="1"
+					Name="depreciationYearsIntoFuture"
+					Classes="yearsAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Button
+				Margin="100,20,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15">
+				calculate
+			</Button>
+			
+			<TextBlock
+				Margin="95,10,10,10"
+				FontWeight="DemiBold"
+				FontSize="15"
+				Foreground="Snow">
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+		Name="simpleInterestCalculator"
+		IsVisible="True"
+		HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontWeight="DemiBold"
+				FontSize="30"
+				TextDecorations="Underline"
+				PointerReleased="returnToFinancialCalculator">
+				simple interest calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center"
+				Margin="0,30,0,20">
+				<Grid
+					ShowGridLines="False"
+					Margin="5"
+					ColumnDefinitions="200, 200"
+					RowDefinitions="50, 50, 50">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						principle price
+					</TextBlock>
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						Name="simpleInterestPrincipleRate"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						interest rate
+					</TextBlock>
+					<TextBox
+					Grid.Row="1"
+					Grid.Column="1"
+					Name="simpleInterestRateUserInput"
+					Classes="percentAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="2"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						years into future
+					</TextBlock>
+					<TextBox
+					Grid.Row="2"
+					Grid.Column="1"
+					Name="simpleInterestYearsFutureUserInput"
+					Classes="yearsAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Button
+				Margin="100,20,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15">
+				calculate
+			</Button>
+			
+			<TextBlock
+				Margin="95,10,10,10"
+				FontWeight="DemiBold"
+				FontSize="15"
+				Foreground="Snow">
+			</TextBlock>
+		</StackPanel>
+
+		<StackPanel
+		Name="compoundInterestCalculator"
+		IsVisible="True"
+		HorizontalAlignment="Center">
+			<TextBlock
+				Classes="directions"
+				FontWeight="DemiBold"
+				FontSize="30"
+				TextDecorations="Underline"
+				PointerReleased="returnToFinancialCalculator">
+				compound interest calculator
+			</TextBlock>
+
+			<StackPanel
+				HorizontalAlignment="Center"
+				Margin="0,30,0,20">
+				<Grid
+					ShowGridLines="False"
+					Margin="5"
+					ColumnDefinitions="200, 200"
+					RowDefinitions="50, 50, 50">
+					<TextBlock
+						Grid.Row="0"
+						Grid.Column="0"
+						Classes="pricePromptTextBlock">
+						principle price
+					</TextBlock>
+					<TextBox
+						Grid.Row="0"
+						Grid.Column="1"
+						Name="interestOwedPrinciplePriceUserInput"
+						Classes="priceAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="1"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						interest rate
+					</TextBlock>
+					<TextBox
+					Grid.Row="1"
+					Grid.Column="1"
+					Name="interestOwedInterestRateUserInput"
+					Classes="percentAnswerTextBox">
+					</TextBox>
+					<TextBlock
+					Grid.Row="2"
+					Grid.Column="0"
+					Classes="pricePromptTextBlock">
+						years into future
+					</TextBlock>
+					<TextBox
+					Grid.Row="2"
+					Grid.Column="1"
+					Name="interestOwedYearsIntoFutureUserInput"
+					Classes="yearsAnswerTextBox">
+					</TextBox>
+				</Grid>
+			</StackPanel>
+			
+			<Button
+				Margin="100,20,20,20"
+				Width="150"
+				Height="50"
+				Background="rgba(255, 221, 239, 0.8)"
+				HorizontalContentAlignment="Center"
+				VerticalContentAlignment="Center"
+				CornerRadius="50"
+				BorderThickness="2"
+				BorderBrush="Snow"
+				FontWeight="DemiBold"
+				Foreground="Snow"
+				FontSize="15">
+				calculate
+			</Button>
+			
+			<TextBlock
+				Margin="95,10,10,10"
+				FontWeight="DemiBold"
+				FontSize="15"
+				Foreground="Snow">
+			</TextBlock>
+		</StackPanel>
+	</Panel>	
+</Window>
