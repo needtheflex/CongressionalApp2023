@@ -21,8 +21,8 @@ public partial class MainWindow : Window
         homeStackPanel.IsVisible = true;
     }
 
-    private void archiveClicked(object sender, RoutedEventArgs e) 
-    { 
+    private void archiveClicked(object sender, RoutedEventArgs e)
+    {
         homeStackPanel.IsVisible = false;
         archiveStackPanel.IsVisible = true;
     }
@@ -39,7 +39,7 @@ public partial class MainWindow : Window
     }
 
 
-    private void goToBudgetCalculationsStackPanel (object sender, RoutedEventArgs e) 
+    private void goToBudgetCalculationsStackPanel(object sender, RoutedEventArgs e)
     {
         budgetingAndSavingsStackPanel.IsVisible = false;
         budgetCalculationStackPanel.IsVisible = true;
@@ -113,15 +113,16 @@ public partial class MainWindow : Window
         {
             assets.Text = "$0";
             income.Text = "$0";
+            recommendation.Text = "make sure to input values as numbers!";
         }
     }
     private void returnToBudgetStackPanel(object sender, PointerReleasedEventArgs e)
     {
         budgetCalculationStackPanel.IsVisible = false;
-        budgetingAndSavingsStackPanel.IsVisible= true;
+        budgetingAndSavingsStackPanel.IsVisible = true;
     }
 
-    private void returnToArchive (object sender, PointerReleasedEventArgs e)
+    private void returnToArchive(object sender, PointerReleasedEventArgs e)
     {
         inflationArchive.IsVisible = false;
         debitvsCreditArchive.IsVisible = false;
@@ -135,7 +136,7 @@ public partial class MainWindow : Window
         archiveStackPanel.IsVisible = true;
     }
 
-    private void openInflationArchive (object sender, RoutedEventArgs e)
+    private void openInflationArchive(object sender, RoutedEventArgs e)
     {
         archiveStackPanel.IsVisible = false;
         inflationArchive.IsVisible = true;
@@ -151,7 +152,7 @@ public partial class MainWindow : Window
         financeInstitutionsArchive.IsVisible = true;
     }
 
-    private void openInterestRateArchive (object sender, RoutedEventArgs e)
+    private void openInterestRateArchive(object sender, RoutedEventArgs e)
     {
         archiveStackPanel.IsVisible = false;
         interestRatesArchive.IsVisible = true;
@@ -196,7 +197,7 @@ public partial class MainWindow : Window
         compoundInterestCalculator.IsVisible = false;
         financialCalculatorsStackPanel.IsVisible = true;
     }
-    
+
     private void openInflationCalculator(object sender, RoutedEventArgs e)
     {
         financialCalculatorsStackPanel.IsVisible = false;
@@ -228,4 +229,215 @@ public partial class MainWindow : Window
         compoundInterestCalculator.IsVisible = true;
     }
 
+    private void calculateInflation(object sender, RoutedEventArgs e)
+    {
+        if (Double.TryParse(inflationOldPriceUserInput.Text, out double unused))
+        {
+            double oldPrice = Double.Parse(inflationOldPriceUserInput.Text);
+            if (Double.TryParse(inflationNewPriceUserInput.Text, out double a))
+            {
+                double newPrice = Double.Parse(inflationNewPriceUserInput.Text);
+                double answer = (newPrice - oldPrice) / oldPrice * 100;
+                inflationRateUserInput.Text =  answer.ToString("0.00") + "%";
+
+                //checks if it rlly is inflation or prices r equal after tvm calculations
+                if (newPrice < oldPrice)
+                {
+                    inflationValue.Text = "this looks like deflation!";
+                    inflationRateUserInput.Text = " ";
+                }
+                else if (newPrice == oldPrice)
+                {
+                    inflationValue.Text = "no change";
+                    inflationOldPriceUserInput.Text = " ";
+                }
+            }
+        }
+        else
+        {
+            inflationValue.Text = "input values!";
+        }
+    }
+
+    private void calculateDeflation(object sender, RoutedEventArgs e)
+    {
+        if (Double.TryParse(deflationOldPriceUserInput.Text, out double unused))
+        {
+            double oldPrice = Double.Parse(deflationOldPriceUserInput.Text);
+            if (Double.TryParse(deflationNewPriceUserInput.Text, out double a))
+            {
+                double newPrice = Double.Parse(deflationNewPriceUserInput.Text);
+                double answer = (oldPrice - newPrice) / oldPrice * 100;
+                deflateRateUserInput.Text = answer.ToString("0.00") + "%";
+
+                //checks if it rlly is deflation or prices r equal after tvm calculations
+                if (newPrice > oldPrice)
+                {
+                    deflationValue.Text = "this looks like inflation!";
+                    deflateRateUserInput.Text = " ";
+                }
+                else if (newPrice == oldPrice)
+                {
+                    deflationValue.Text = "no change";
+                    deflateRateUserInput.Text = " ";
+                }
+            }
+        }
+        else
+        {
+            deflationValue.Text = "input values!";
+        }
+    }
+
+
+    private void calculateAppreciationFinal(object sender, RoutedEventArgs e)
+    {
+        if (Double.TryParse(appreciationOriginalPriceUserInput.Text, out double unused))
+        {
+            double originalPrice = Double.Parse(appreciationOriginalPriceUserInput.Text);
+            if (Double.TryParse(appreciationRateUserInput.Text, out double a))
+            {
+                double rate = Double.Parse(appreciationRateUserInput.Text) / 100;
+                if (Double.TryParse(appreciationYearsIntoFuture.Text, out double b))
+                {
+                    double years = Double.Parse(appreciationYearsIntoFuture.Text);
+                    double finalPrice = originalPrice * Math.Pow(1 + rate, years);
+                    appreciationFutureValueUserInput.Text = "$" + finalPrice.ToString("0.00");
+
+                    //checks if it rlly is appreciation
+                    if (finalPrice < originalPrice)
+                    {
+                        appreciationValue.Text = "this looks like depreciation!";
+                        appreciationFutureValueUserInput.Text = " ";
+                    }
+                    else if (finalPrice == originalPrice)
+                    {
+                        appreciationValue.Text = "no change";
+                        appreciationFutureValueUserInput.Text = " ";
+                    }
+                }
+            }
+        }
+        else
+        {
+            appreciationValue.Text = "input values!";
+        }
+    }
+
+    private void calculateDepreciationFinal(object sender, RoutedEventArgs e)
+    {
+        if (Double.TryParse(depreciationOriginalPriceUserInput.Text, out double unused))
+        {
+            double originalPrice = Double.Parse(depreciationOriginalPriceUserInput.Text);
+            if (Double.TryParse(depreciationRateUserInput.Text, out double a))
+            {
+                double rate = Double.Parse(depreciationRateUserInput.Text) / 100;
+                if (Double.TryParse(depreciationYearsIntoFuture.Text, out double b))
+                {
+                    double years = Double.Parse(depreciationYearsIntoFuture.Text);
+                    double finalPrice = originalPrice - (originalPrice * Math.Pow(1 + rate, years));
+                    depreciationFutureValueUserInput.Text = "$" + finalPrice.ToString();
+
+                    //checks if it is rlly depreciation 
+                    if (finalPrice == originalPrice)
+                    {
+                        depreciationValue.Text = "no change";
+                        depreciationFutureValueUserInput.Text = " ";
+                    }
+                }
+            }
+        }
+        else
+        {
+            depreciationValue.Text = "input values!";
+        }
+    }
+
+    private void calculateSimpleInterest(object sender, RoutedEventArgs e)
+    {
+        if (Double.TryParse(simpleInterestPrinciple.Text, out double unused))
+        {
+            double principle = Double.Parse(simpleInterestPrinciple.Text);
+            if (Double.TryParse(simpleInterestRateUserInput.Text, out double b))
+            {
+                double simpleRate = Double.Parse(simpleInterestRateUserInput.Text);
+                if (Double.TryParse(simpleInterestYearsFutureUserInput.Text, out double stop))
+                {
+                    double years = Double.Parse(simpleInterestYearsFutureUserInput.Text);
+                    double final = principle + ((principle * Math.Pow((simpleRate / 100), years)));
+                    simpleInterestFutureValueUserInput.Text = "$" + final.ToString("0.00");
+
+                    //checks if it is rlly changed 
+                    if (principle == final)
+                    {
+                        simpleInterestValue.Text = "no change";
+                        simpleInterestFutureValueUserInput.Text = " ";
+                    }
+
+                }
+            }
+        }
+        else
+        {
+            simpleInterestValue.Text = "input values!";
+        }
+    }
+
+    private void calculateCompoundInterest(object sender, RoutedEventArgs e)
+    {
+        if (Double.TryParse(compoundInterestPrinciplePriceUserInput.Text, out double unused))
+        {
+            double principle = Double.Parse(compoundInterestPrinciplePriceUserInput.Text);
+            if (Double.TryParse(compoundInterestRateUserInput.Text, out double b))
+            {
+                double simpleRate = Double.Parse(compoundInterestRateUserInput.Text);
+                if (Double.TryParse(compoundInterestYearsIntoFutureUserInput.Text, out double stop))
+                {
+                    double years = Double.Parse(compoundInterestYearsIntoFutureUserInput.Text);
+                    double final = principle + ((principle * Math.Pow((1 + (simpleRate / 100)), years)));
+                    compoundInterestFutureValueUserInput.Text = "$" + final.ToString("0.00");
+
+                    //checks if it is rlly changed 
+                    if (principle == final)
+                    {
+                        compoundInterestValue.Text = "no change";
+                        compoundInterestFutureValueUserInput.Text = " ";
+                    }
+
+                }
+            }
+        }
+        else
+        {
+            compoundInterestValue.Text = "input values!";
+        }
+    }
+
+    private void inflationSeeGraph (object sender, RoutedEventArgs e)
+    {
+        inflationCalculator.IsVisible = false;
+    }
+
+    private void deflationSeeGraph (object sender, RoutedEventArgs e)
+    {
+        deflationCalculator.IsVisible = false;
+    }
+    private void appreciationSeeGraph(object sender, RoutedEventArgs e)
+    {
+        appreciationCalculator.IsVisible = false;
+    }
+    private void depreciationSeeGraph(object sender, RoutedEventArgs e)
+    {
+        depreciationCalculator.IsVisible = false;
+    }
+
+    private void simpleInterestSeeGraph(object sender, RoutedEventArgs e)
+    {
+        simpleInterestCalculator.IsVisible = false;
+    }
+
+    private void compoundInterestSeeGraph(object sender, RoutedEventArgs e)
+    {
+        compoundInterestCalculator.IsVisible = false;
+    }
 }
