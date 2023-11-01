@@ -284,13 +284,13 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            inflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate, time)).ToString("0.00") + "%";
+            inflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate/100, time)).ToString("0.00") + "%";
             return;
         }
 
         if (oldPrice == -69420)
         {
-            inflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate, time)).ToString("0.00");
+            inflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate/100, time)).ToString("0.00");
             return;
         }
 
@@ -318,7 +318,7 @@ public partial class MainWindow : Window
                 inflationYearsIntoFutureUserInput.Text = " ";
                 return;
             }
-            inflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, rate).ToString("0.00");
+            inflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, 1 + rate/100).ToString("0.00");
             return;
         }
         return;
@@ -380,14 +380,14 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            deflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate, time)).ToString("0.00");
+            deflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 - rate/100, time)).ToString("0.00");
             deflationValue.Text = " ";
             return;
         }
 
         if (oldPrice == -69420)
         {
-            deflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate, time)).ToString("0.00");
+            deflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 - rate/100, time)).ToString("0.00");
             deflationValue.Text = " ";
             return;
         }
@@ -415,7 +415,7 @@ public partial class MainWindow : Window
                 deflationValue.Text = "this looks like inflation!";
                 return;
             }
-            deflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, rate).ToString("0.00");
+            deflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, 1 - rate/100).ToString("0.00");
             return;
         }
         return;
@@ -476,13 +476,13 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            appreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 + rate, time)).ToString("0.00");
+            appreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 + rate/100, time)).ToString("0.00");
             return;
         }
 
         if (oldPrice == -69420)
         {
-            appreciationOriginalPriceUserInput.Text = (newPrice / Math.Pow(1 + rate, time)).ToString("0.00");
+            appreciationOriginalPriceUserInput.Text = (newPrice / Math.Pow(1 + rate/100, time)).ToString("0.00");
             return;
         }
 
@@ -504,7 +504,7 @@ public partial class MainWindow : Window
 
         if (time == -69420)
         {
-            appreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, rate).ToString("0.00");
+            appreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, 1+rate/100).ToString("0.00");
             return;
         }
         return;
@@ -566,13 +566,13 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            depreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 - rate, time)).ToString("0.00");
+            depreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 - rate/100, time)).ToString("0.00");
             return;
         }
 
         if (oldPrice == -69420)
         {
-            depreciationFutureValueUserInput.Text = (newPrice / Math.Pow(1 - rate, time)).ToString("0.00");
+            depreciationFutureValueUserInput.Text = (newPrice / Math.Pow(1 - rate/100, time)).ToString("0.00");
             return;
         }
 
@@ -594,7 +594,7 @@ public partial class MainWindow : Window
 
         if (time == -69420)
         {
-            depreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, rate).ToString("0.00");
+            depreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, 1-rate/100).ToString("0.00");
             return;
         }
         return;
