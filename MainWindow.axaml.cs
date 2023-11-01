@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System;
 using System.Data;
 
@@ -231,126 +232,367 @@ public partial class MainWindow : Window
 
     private void calculateInflation(object sender, RoutedEventArgs e)
     {
+
+        /////// INFLATION NEEDS TIME VARIABLE!!!!!!!!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX IMPORTANTTTTTTTTTTTTT
+        ///// -69420 used for placeholder to avoid errors. What are the odds these are the values, not likely. (especially at our target age)
+        double newPrice = -69420;
+        double oldPrice = -69420;
+        double rate = -69420;
+        double time = -69420; ///////place holder until it can be added
+        int emptyCount = 0;
         if (Double.TryParse(inflationOldPriceUserInput.Text, out double unused))
         {
-            double oldPrice = Double.Parse(inflationOldPriceUserInput.Text);
-            if (Double.TryParse(inflationNewPriceUserInput.Text, out double a))
-            {
-                double newPrice = Double.Parse(inflationNewPriceUserInput.Text);
-                double answer = (newPrice - oldPrice) / oldPrice * 100;
-                inflationRateUserInput.Text =  answer.ToString("0.00") + "%";
-
-                //checks if it rlly is inflation or prices r equal after tvm calculations
-                if (newPrice < oldPrice)
-                {
-                    inflationValue.Text = "this looks like deflation!";
-                    inflationRateUserInput.Text = " ";
-                }
-                else if (newPrice == oldPrice)
-                {
-                    inflationValue.Text = "no change";
-                    inflationOldPriceUserInput.Text = " ";
-                }
-            }
-        }
-        else
+            oldPrice = Double.Parse(inflationOldPriceUserInput.Text);
+        } else
         {
-            inflationValue.Text = "input values!";
+            emptyCount++;
         }
+        if (Double.TryParse(inflationNewPriceUserInput.Text, out double a))
+        {
+            newPrice = Double.Parse(inflationNewPriceUserInput.Text);
+        } else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(inflationRateUserInput.Text, out double b))
+        {
+            rate = Double.Parse(inflationRateUserInput.Text);
+        } else
+        {
+            emptyCount++;
+        }
+        /* PLACE HOLDER FOR TIME VARIABLE
+        if (Double.TryParase(inflationTimeUserInput.Text out double c))
+        {
+            time = Double.Parse(inflationTimeUserInput.Text);
+        }
+        else 
+        {
+            emptyCount++;
+        }
+         */
+
+        if (emptyCount >1)
+        {
+            inflationValue.Text = "too many missing variables";
+            return;
+        } else if (emptyCount == 0)
+        {
+            inflationValue.Text = "no variables to solve for!";
+            return;
+        }
+
+        if (newPrice == -69420)
+        {
+            inflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1+rate, time)).ToString();
+            return;
+        }
+
+        if (oldPrice == -69420)
+        {
+            inflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate, time)).ToString();
+            return;
+        }
+
+        if (rate == -69420)
+        {
+            if (newPrice < oldPrice)
+            {
+                inflationValue.Text = "this looks like deflation!";
+                inflationRateUserInput.Text = " ";
+                return;
+            }
+            if (oldPrice == 0 || newPrice == oldPrice)
+            {
+                inflationRateUserInput.Text = "0.000";
+            }
+            inflationRateUserInput.Text = ((oldPrice - newPrice) / oldPrice * 100).ToString();
+            return;
+        }
+
+        if (time == -69420)
+        {
+            //placeholder~~~~  inflationTimeUserInput.Text = Math.Log(newPrice/oldPrice, rate).ToString();
+            return;
+        }
+        return;
+
     }
 
     private void calculateDeflation(object sender, RoutedEventArgs e)
     {
+
+        /////// INFLATION NEEDS TIME VARIABLE!!!!!!!!!!! XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX IMPORTANTTTTTTTTTTTTT
+        ///// -69420 used for placeholder to avoid errors. What are the odds these are the values, not likely. (especially at our target age)
+        double newPrice = -69420;
+        double oldPrice = -69420;
+        double rate = -69420;
+        double time = -69420; ///////place holder until it can be added
+        int emptyCount = 0;
         if (Double.TryParse(deflationOldPriceUserInput.Text, out double unused))
         {
-            double oldPrice = Double.Parse(deflationOldPriceUserInput.Text);
-            if (Double.TryParse(deflationNewPriceUserInput.Text, out double a))
-            {
-                double newPrice = Double.Parse(deflationNewPriceUserInput.Text);
-                double answer = (oldPrice - newPrice) / oldPrice * 100;
-                deflateRateUserInput.Text = answer.ToString("0.00") + "%";
-
-                //checks if it rlly is deflation or prices r equal after tvm calculations
-                if (newPrice > oldPrice)
-                {
-                    deflationValue.Text = "this looks like inflation!";
-                    deflateRateUserInput.Text = " ";
-                }
-                else if (newPrice == oldPrice)
-                {
-                    deflationValue.Text = "no change";
-                    deflateRateUserInput.Text = " ";
-                }
-            }
+            oldPrice = Double.Parse(deflationOldPriceUserInput.Text);
         }
         else
         {
-            deflationValue.Text = "input values!";
+            emptyCount++;
         }
+        if (Double.TryParse(deflationNewPriceUserInput.Text, out double a))
+        {
+            newPrice = Double.Parse(deflationNewPriceUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(deflateRateUserInput.Text, out double b))
+        {
+            rate = Double.Parse(deflateRateUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        /* PLACE HOLDER FOR TIME VARIABLE
+        if (Double.TryParase(deflationTimeUserInput.Text out double c))
+        {
+            time = Double.Parse(deflationTimeUserInput.Text);
+        }
+        else 
+        {
+            emptyCount++;
+        }
+         */
+
+        if (emptyCount > 1)
+        {
+            inflationValue.Text = "too many missing variables";
+            return;
+        }
+        else if (emptyCount == 0)
+        {
+            inflationValue.Text = "no variables to solve for!";
+            return;
+        }
+
+        if (newPrice == -69420)
+        {
+            deflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate, time)).ToString();
+            return;
+        }
+
+        if (oldPrice == -69420)
+        {
+            deflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate, time)).ToString();
+            return;
+        }
+
+        if (rate == -69420)
+        {
+            if (newPrice < oldPrice)
+            {
+                deflationValue.Text = "this looks like deflation!";
+                deflateRateUserInput.Text = " ";
+                return;
+            }
+            if (oldPrice == 0 || newPrice == oldPrice)
+            {
+                deflateRateUserInput.Text = "0.000";
+            }
+            deflateRateUserInput.Text = ((oldPrice - newPrice) / oldPrice * 100).ToString();
+            return;
+        }
+
+        if (time == -69420)
+        {
+            //placeholder~~~~  deflationTimeUserInput.Text = Math.Log(newPrice/oldPrice, rate).ToString();
+            return;
+        }
+        return;
+
     }
 
 
-    private void calculateAppreciationFinal(object sender, RoutedEventArgs e)
+    private void calculateAppreciation(object sender, RoutedEventArgs e)
     {
+
+
+        double newPrice = -69420;
+        double oldPrice = -69420;
+        double rate = -69420;
+        double time = -69420; 
+        int emptyCount = 0;
         if (Double.TryParse(appreciationOriginalPriceUserInput.Text, out double unused))
         {
-            double originalPrice = Double.Parse(appreciationOriginalPriceUserInput.Text);
-            if (Double.TryParse(appreciationRateUserInput.Text, out double a))
-            {
-                double rate = Double.Parse(appreciationRateUserInput.Text) / 100;
-                if (Double.TryParse(appreciationYearsIntoFuture.Text, out double b))
-                {
-                    double years = Double.Parse(appreciationYearsIntoFuture.Text);
-                    double finalPrice = originalPrice * Math.Pow(1 + rate, years);
-                    appreciationFutureValueUserInput.Text = "$" + finalPrice.ToString("0.00");
-
-                    //checks if it rlly is appreciation
-                    if (finalPrice < originalPrice)
-                    {
-                        appreciationValue.Text = "this looks like depreciation!";
-                        appreciationFutureValueUserInput.Text = " ";
-                    }
-                    else if (finalPrice == originalPrice)
-                    {
-                        appreciationValue.Text = "no change";
-                        appreciationFutureValueUserInput.Text = " ";
-                    }
-                }
-            }
+            oldPrice = Double.Parse(appreciationOriginalPriceUserInput.Text);
         }
         else
         {
-            appreciationValue.Text = "input values!";
+            emptyCount++;
         }
+        if (Double.TryParse(appreciationFutureValueUserInput.Text, out double a))
+        {
+            newPrice = Double.Parse(appreciationFutureValueUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(appreciationRateUserInput.Text, out double b))
+        {
+            rate = Double.Parse(appreciationRateUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        
+        if (Double.TryParse(appreciationYearsIntoFuture.Text, out double c))
+        {
+            time = Double.Parse(appreciationYearsIntoFuture.Text);
+        }
+        else 
+        {
+            emptyCount++;
+        }
+
+        if (emptyCount > 1)
+        {
+            inflationValue.Text = "too many missing variables";
+            return;
+        }
+        else if (emptyCount == 0)
+        {
+            inflationValue.Text = "no variables to solve for!";
+            return;
+        }
+
+        if (newPrice == -69420)
+        {
+            deflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate, time)).ToString();
+            return;
+        }
+
+        if (oldPrice == -69420)
+        {
+            deflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate, time)).ToString();
+            return;
+        }
+
+        if (rate == -69420)
+        {
+            if (newPrice < oldPrice)
+            {
+                appreciationValue.Text = "this looks like depreciation!";
+                appreciationRateUserInput.Text = " ";
+                return;
+            }
+            if (oldPrice == 0 || newPrice == oldPrice)
+            {
+                appreciationRateUserInput.Text = "0.000";
+            }
+            appreciationRateUserInput.Text = ((oldPrice - newPrice) / oldPrice * 100).ToString();
+            return;
+        }
+
+        if (time == -69420)
+        {
+            appreciationYearsIntoFuture.Text = Math.Log(newPrice/oldPrice, rate).ToString();
+            return;
+        }
+        return;
+
     }
 
-    private void calculateDepreciationFinal(object sender, RoutedEventArgs e)
+    private void calculateDepreciation(object sender, RoutedEventArgs e)
     {
+
+       
+        double newPrice = -69420;
+        double oldPrice = -69420;
+        double rate = -69420;
+        double time = -69420; 
+        int emptyCount = 0;
         if (Double.TryParse(depreciationOriginalPriceUserInput.Text, out double unused))
         {
-            double originalPrice = Double.Parse(depreciationOriginalPriceUserInput.Text);
-            if (Double.TryParse(depreciationRateUserInput.Text, out double a))
-            {
-                double rate = Double.Parse(depreciationRateUserInput.Text) / 100;
-                if (Double.TryParse(depreciationYearsIntoFuture.Text, out double b))
-                {
-                    double years = Double.Parse(depreciationYearsIntoFuture.Text);
-                    double finalPrice = originalPrice - (originalPrice * Math.Pow(1 + rate, years));
-                    depreciationFutureValueUserInput.Text = "$" + finalPrice.ToString();
-
-                    //checks if it is rlly depreciation 
-                    if (finalPrice == originalPrice)
-                    {
-                        depreciationValue.Text = "no change";
-                        depreciationFutureValueUserInput.Text = " ";
-                    }
-                }
-            }
+            oldPrice = Double.Parse(depreciationOriginalPriceUserInput.Text);
         }
         else
         {
-            depreciationValue.Text = "input values!";
+            emptyCount++;
         }
+        if (Double.TryParse(depreciationFutureValueUserInput.Text, out double a))
+        {
+            newPrice = Double.Parse(depreciationFutureValueUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(depreciationRateUserInput.Text, out double b))
+        {
+            rate = Double.Parse(depreciationRateUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+
+        if (Double.TryParse(depreciationYearsIntoFuture.Text, out double c))
+        {
+            time = Double.Parse(depreciationYearsIntoFuture.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+
+        if (emptyCount > 1)
+        {
+            inflationValue.Text = "too many missing variables";
+            return;
+        }
+        else if (emptyCount == 0)
+        {
+            inflationValue.Text = "no variables to solve for!";
+            return;
+        }
+
+        if (newPrice == -69420)
+        {
+            depreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 - rate, time)).ToString();
+            return;
+        }
+
+        if (oldPrice == -69420)
+        {
+            depreciationFutureValueUserInput.Text = (newPrice / Math.Pow(1 - rate, time)).ToString();
+            return;
+        }
+
+        if (rate == -69420)
+        {
+            if (newPrice > oldPrice)
+            {
+                depreciationValue.Text = "this looks like appreciation!";
+                depreciationRateUserInput.Text = " ";
+                return;
+            }
+            if (oldPrice == 0 || newPrice == oldPrice)
+            {
+                depreciationRateUserInput.Text = "0.000";
+            }
+            depreciationRateUserInput.Text = ((oldPrice - newPrice) / oldPrice * 100).ToString();
+            return;
+        }
+
+        if (time == -69420)
+        {
+            depreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, rate).ToString();
+            return;
+        }
+        return;
+
     }
 
     private void calculateSimpleInterest(object sender, RoutedEventArgs e)
@@ -413,12 +655,12 @@ public partial class MainWindow : Window
         }
     }
 
-    private void inflationSeeGraph (object sender, RoutedEventArgs e)
+    private void inflationSeeGraph(object sender, RoutedEventArgs e)
     {
         inflationCalculator.IsVisible = false;
     }
 
-    private void deflationSeeGraph (object sender, RoutedEventArgs e)
+    private void deflationSeeGraph(object sender, RoutedEventArgs e)
     {
         deflationCalculator.IsVisible = false;
     }
