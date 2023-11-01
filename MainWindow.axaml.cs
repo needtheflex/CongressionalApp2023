@@ -284,13 +284,13 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            inflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate/100, time)).ToString("0.00") + "%";
+            inflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 + rate / 100, time)).ToString("0.00") + "%";
             return;
         }
 
         if (oldPrice == -69420)
         {
-            inflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate/100, time)).ToString("0.00");
+            inflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 + rate / 100, time)).ToString("0.00");
             return;
         }
 
@@ -318,7 +318,7 @@ public partial class MainWindow : Window
                 inflationYearsIntoFutureUserInput.Text = " ";
                 return;
             }
-            inflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, 1 + rate/100).ToString("0.00");
+            inflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, 1 + rate / 100).ToString("0.00");
             return;
         }
         return;
@@ -380,14 +380,14 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            deflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 - rate/100, time)).ToString("0.00");
+            deflationNewPriceUserInput.Text = (oldPrice * Math.Pow(1 - rate / 100, time)).ToString("0.00");
             deflationValue.Text = " ";
             return;
         }
 
         if (oldPrice == -69420)
         {
-            deflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 - rate/100, time)).ToString("0.00");
+            deflationOldPriceUserInput.Text = (newPrice / Math.Pow(1 - rate / 100, time)).ToString("0.00");
             deflationValue.Text = " ";
             return;
         }
@@ -415,7 +415,7 @@ public partial class MainWindow : Window
                 deflationValue.Text = "this looks like inflation!";
                 return;
             }
-            deflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, 1 - rate/100).ToString("0.00");
+            deflationYearsIntoFutureUserInput.Text = Math.Log(newPrice / oldPrice, 1 - rate / 100).ToString("0.00");
             return;
         }
         return;
@@ -476,13 +476,13 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            appreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 + rate/100, time)).ToString("0.00");
+            appreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 + rate / 100, time)).ToString("0.00");
             return;
         }
 
         if (oldPrice == -69420)
         {
-            appreciationOriginalPriceUserInput.Text = (newPrice / Math.Pow(1 + rate/100, time)).ToString("0.00");
+            appreciationOriginalPriceUserInput.Text = (newPrice / Math.Pow(1 + rate / 100, time)).ToString("0.00");
             return;
         }
 
@@ -504,7 +504,7 @@ public partial class MainWindow : Window
 
         if (time == -69420)
         {
-            appreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, 1+rate/100).ToString("0.00");
+            appreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, 1 + rate / 100).ToString("0.00");
             return;
         }
         return;
@@ -566,13 +566,13 @@ public partial class MainWindow : Window
 
         if (newPrice == -69420)
         {
-            depreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 - rate/100, time)).ToString("0.00");
+            depreciationFutureValueUserInput.Text = (oldPrice * Math.Pow(1 - rate / 100, time)).ToString("0.00");
             return;
         }
 
         if (oldPrice == -69420)
         {
-            depreciationFutureValueUserInput.Text = (newPrice / Math.Pow(1 - rate/100, time)).ToString("0.00");
+            depreciationFutureValueUserInput.Text = (newPrice / Math.Pow(1 - rate / 100, time)).ToString("0.00");
             return;
         }
 
@@ -594,7 +594,7 @@ public partial class MainWindow : Window
 
         if (time == -69420)
         {
-            depreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, 1-rate/100).ToString("0.00");
+            depreciationYearsIntoFuture.Text = Math.Log(newPrice / oldPrice, 1 - rate / 100).ToString("0.00");
             return;
         }
         return;
@@ -603,60 +603,155 @@ public partial class MainWindow : Window
     private void calculateSimpleInterest(object sender, RoutedEventArgs e)
     {
         simpleInterestValue.Text = "  ";
+        double principle = -69420;
+        double simpleRate = -69420;
+        double years = -69420;
+        double futureValue = -69420;
+        int emptyCount = 0;
         if (Double.TryParse(simpleInterestPrinciple.Text, out double unused))
         {
-            double principle = Double.Parse(simpleInterestPrinciple.Text);
-            if (Double.TryParse(simpleInterestRateUserInput.Text, out double b))
-            {
-                double simpleRate = Double.Parse(simpleInterestRateUserInput.Text);
-                if (Double.TryParse(simpleInterestYearsFutureUserInput.Text, out double stop))
-                {
-                    double years = Double.Parse(simpleInterestYearsFutureUserInput.Text);
-                    double final = principle + ((principle * Math.Pow((simpleRate / 100), years)));
-                    simpleInterestFutureValueUserInput.Text = "$" + final.ToString("0.00");
-
-                    //checks if it is rlly changed 
-                    if (principle == final)
-                    {
-                        simpleInterestValue.Text = "no change";
-                        simpleInterestFutureValueUserInput.Text = " ";
-                    }
-
-                }
-            }
+            principle = Double.Parse(simpleInterestPrinciple.Text);
         }
         else
         {
-            simpleInterestValue.Text = "please input principle, rate, and years into the future!";
+            emptyCount++;
         }
+        if (Double.TryParse(simpleInterestRateUserInput.Text, out double b))
+        {
+            simpleRate = Double.Parse(simpleInterestRateUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(simpleInterestYearsFutureUserInput.Text, out double stop))
+        {
+            years = Double.Parse(simpleInterestYearsFutureUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(simpleInterestFutureValueUserInput.Text, out double h)){
+            futureValue = Double.Parse(simpleInterestFutureValueUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+
+        if (emptyCount > 1)
+        {
+            simpleInterestValue.Text = "too many missing variables";
+            return;
+        }
+        else if (emptyCount == 0)
+        {
+            simpleInterestValue.Text = "no variables to solve for!";
+            return;
+        }
+
+        if (principle == -69420)
+        {
+            simpleInterestPrinciple.Text = (futureValue / ((1+ simpleRate/100) * years)).ToString("0.##");
+            return;
+        }
+
+        if (futureValue == -69420)
+        {
+            simpleInterestFutureValueUserInput.Text = (principle * (1+simpleRate/100) * years).ToString("0.##");
+            return;
+        }
+
+        if (simpleRate == -69420)
+        {
+            simpleInterestRateUserInput.Text = (futureValue / (principle * years) * 100).ToString("0.#######");
+            return;
+        }
+
+        if (years == -69420)
+        {
+            simpleInterestYearsFutureUserInput.Text = (futureValue / (principle * (1 +simpleRate/100))).ToString("0.######");
+            return;
+        }
+        return;
     }
 
     private void calculateCompoundInterest(object sender, RoutedEventArgs e)
     {
+        simpleInterestValue.Text = "  ";
+        double principle = -69420;
+        double simpleRate = -69420;
+        double years = -69420;
+        double futureValue = -69420;
+        int emptyCount = 0;
         if (Double.TryParse(compoundInterestPrinciplePriceUserInput.Text, out double unused))
         {
-            double principle = Double.Parse(compoundInterestPrinciplePriceUserInput.Text);
-            if (Double.TryParse(compoundInterestRateUserInput.Text, out double b))
-            {
-                double simpleRate = Double.Parse(compoundInterestRateUserInput.Text);
-                if (Double.TryParse(compoundInterestYearsIntoFutureUserInput.Text, out double stop))
-                {
-                    double years = Double.Parse(compoundInterestYearsIntoFutureUserInput.Text);
-                    double final = principle + ((principle * Math.Pow((1 + (simpleRate / 100)), years)));
-                    compoundInterestFutureValueUserInput.Text = "$" + final.ToString("0.00");
-
-                    //checks if it is rlly changed 
-                    if (principle == final)
-                    {
-                        compoundInterestValue.Text = "no change";
-                        compoundInterestFutureValueUserInput.Text = " ";
-                    }
-                }
-            }
+            principle = Double.Parse(compoundInterestPrinciplePriceUserInput.Text);
         }
         else
         {
-            compoundInterestValue.Text = "please input principle, rate, and future years!";
+            emptyCount++;
         }
+        if (Double.TryParse(compoundInterestRateUserInput.Text, out double b))
+        {
+            simpleRate = Double.Parse(compoundInterestRateUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(compoundInterestYearsIntoFutureUserInput.Text, out double stop))
+        {
+            years = Double.Parse(compoundInterestYearsIntoFutureUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+        if (Double.TryParse(compoundInterestFutureValueUserInput.Text, out double h)) {
+            futureValue = Double.Parse(compoundInterestFutureValueUserInput.Text);
+        }
+        else
+        {
+            emptyCount++;
+        }
+
+        if (emptyCount > 1)
+        {
+            simpleInterestValue.Text = "too many missing variables";
+            return;
+        }
+        else if (emptyCount == 0)
+        {
+            simpleInterestValue.Text = "no variables to solve for!";
+            return;
+        }
+
+        if (principle == -69420)
+        {
+            simpleInterestPrinciple.Text = (futureValue / Math.Pow((1+simpleRate), years)).ToString("0.##");
+            return;
+        }
+
+        if (futureValue == -69420)
+        {
+            simpleInterestFutureValueUserInput.Text = (principle * Math.Pow(1+simpleRate/100, years)).ToString("0.##");
+            return;
+        }
+
+        if (simpleRate == -69420)
+        {
+            simpleInterestRateUserInput.Text = (Math.Pow(futureValue / principle, 1 / years) - 1).ToString("0.#######");
+            return;
+        }
+
+        if (years == -69420)
+        {
+            simpleInterestYearsFutureUserInput.Text = (Math.Log(futureValue / principle, 1 + simpleRate / 100)).ToString("0.######");
+            return;
+        }
+        return;
+        
     }
 }
