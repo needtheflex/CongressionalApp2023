@@ -632,7 +632,8 @@ public partial class MainWindow : Window
         {
             emptyCount++;
         }
-        if (Double.TryParse(simpleInterestFutureValueUserInput.Text, out double h)){
+        if (Double.TryParse(simpleInterestFutureValueUserInput.Text, out double h))
+        {
             futureValue = Double.Parse(simpleInterestFutureValueUserInput.Text);
         }
         else
@@ -653,25 +654,25 @@ public partial class MainWindow : Window
 
         if (principle == -69420)
         {
-            simpleInterestPrinciple.Text = futureValue / (1 * (simpleRate/100) * years)).ToString("0.##");
+            simpleInterestPrinciple.Text = (futureValue / (1 * (simpleRate / 100) * years)).ToString("0.##");
             return;
         }
 
         if (futureValue == -69420)
         {
-            simpleInterestFutureValueUserInput.Text = (principle * (1+ (simpleRate/100) * years).ToString("0.##");
+            simpleInterestFutureValueUserInput.Text = (principle * (1 + (simpleRate / 100) * years)).ToString("0.##");
             return;
         }
 
         if (simpleRate == -69420)
         {
-            simpleInterestRateUserInput.Text = (((futureValue/principle) - 1)/years)*100.ToString("0.#######");
+            simpleInterestRateUserInput.Text = ((((futureValue / principle) - 1) / years) * 100).ToString("0.#######");
             return;
         }
 
         if (years == -69420)
         {
-            simpleInterestYearsFutureUserInput.Text = (((futureValue/principle) - 1)/simpleRate/100).ToString("0.######");
+            simpleInterestYearsFutureUserInput.Text = (((futureValue / principle) - 1) / simpleRate / 100).ToString("0.######");
             return;
         }
         return;
@@ -709,7 +710,8 @@ public partial class MainWindow : Window
         {
             emptyCount++;
         }
-        if (Double.TryParse(compoundInterestFutureValueUserInput.Text, out double h)) {
+        if (Double.TryParse(compoundInterestFutureValueUserInput.Text, out double h))
+        {
             futureValue = Double.Parse(compoundInterestFutureValueUserInput.Text);
         }
         else
@@ -730,13 +732,13 @@ public partial class MainWindow : Window
 
         if (principle == -69420)
         {
-            simpleInterestPrinciple.Text = (futureValue / Math.Pow((1+simpleRate), years)).ToString("0.##");
+            simpleInterestPrinciple.Text = (futureValue / Math.Pow((1 + simpleRate), years)).ToString("0.##");
             return;
         }
 
         if (futureValue == -69420)
         {
-            simpleInterestFutureValueUserInput.Text = (principle * Math.Pow(1+simpleRate/100, years)).ToString("0.##");
+            simpleInterestFutureValueUserInput.Text = (principle * Math.Pow(1 + simpleRate / 100, years)).ToString("0.##");
             return;
         }
 
@@ -752,6 +754,6 @@ public partial class MainWindow : Window
             return;
         }
         return;
-        
+
     }
 }
