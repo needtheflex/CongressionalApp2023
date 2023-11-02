@@ -653,25 +653,25 @@ public partial class MainWindow : Window
 
         if (principle == -69420)
         {
-            simpleInterestPrinciple.Text = (futureValue / ((1+ simpleRate/100) * years)).ToString("0.##");
+            simpleInterestPrinciple.Text = futureValue / (1 * (simpleRate/100) * years)).ToString("0.##");
             return;
         }
 
         if (futureValue == -69420)
         {
-            simpleInterestFutureValueUserInput.Text = (principle * (1+simpleRate/100) * years).ToString("0.##");
+            simpleInterestFutureValueUserInput.Text = (principle * (1+ (simpleRate/100) * years).ToString("0.##");
             return;
         }
 
         if (simpleRate == -69420)
         {
-            simpleInterestRateUserInput.Text = (futureValue / (principle * years) * 100).ToString("0.#######");
+            simpleInterestRateUserInput.Text = (((futureValue/principle) - 1)/years)*100.ToString("0.#######");
             return;
         }
 
         if (years == -69420)
         {
-            simpleInterestYearsFutureUserInput.Text = (futureValue / (principle * (1 +simpleRate/100))).ToString("0.######");
+            simpleInterestYearsFutureUserInput.Text = (((futureValue/principle) - 1)/simpleRate/100).ToString("0.######");
             return;
         }
         return;
